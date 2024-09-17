@@ -5,7 +5,6 @@ description: 正在努力寻找我的硕士生导师！
 img: assets/img/12.jpg
 importance: 5
 category: Engaging
-related_publications: true
 ---
 
 
