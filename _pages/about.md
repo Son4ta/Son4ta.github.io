@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://github.com/Son4ta/Son4ta.github.io'>Github</a>.
+subtitle: <a href='https://github.com/Son4ta/Son4ta.github.io'>方成杰</a>.
 
 profile:
   align: right
