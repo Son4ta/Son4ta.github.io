@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://Son4ta.github.io//sitemap.xml
+Sitemap: https://son4ta.github.io/sitemap.xml
