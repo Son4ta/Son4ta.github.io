@@ -1,18 +1,18 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "方成杰(Fang Chengjie)",
+    "label": "硕士研究生",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "fangchengjie24@mails.ucas.ac.cn",
+    "phone": "19906956313",
+    "url": "https://Son4ta.github.io/al-folio/",
+    "summary": "中国科学院大学",
     "location": {
       "address": "2712 Broadway St",
       "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "city": "杭州",
+      "countryCode": "中国",
+      "region": "西湖区"
     },
     "profiles": [
       {
