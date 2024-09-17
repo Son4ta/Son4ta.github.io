@@ -1,14 +1,10 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - Son4ta
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - Son4ta/Intelligent-Computing-Exercise
+  - Son4ta/Picture-Processing-with-GUI 
+  - Son4ta/ Vue-Learning-Project
+  - Son4ta/Son4ta.github.io
