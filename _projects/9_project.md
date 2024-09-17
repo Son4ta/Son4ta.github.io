@@ -1,17 +1,13 @@
 ---
 layout: page
-title: project 9
-description: another project with an image 🎉
-img: assets/img/6.jpg
+title: 天鹅湖计划
+description: 为未来选择继续攻读Phd做准备，争取公派留学
+img: assets/img/csc.jpg
 importance: 4
-category: fun
+category: Long-term
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+暂时还没有内容
 
     ---
     layout: page
