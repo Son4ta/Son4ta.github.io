@@ -15,8 +15,8 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>孙霄宇<br></p>
-      <p>(+1)551-655-5059</p>
-      <p>Jersey City, NJ</p>
+      <p>(+1)551-655-5059<br></p>
+      <p>Jersey City, NJ<br></p>
       <p>xsun43@stevens.edu</p>
   - align: left
     image: zzx.jpg
