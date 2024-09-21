@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 description: 我目前正在进行的项目,您可以从这里知道我正在或打算干什么.
 nav: true
-nav_order: 3
+nav_order: 4
 display_categories: [Engaging, Long-term, work, fun]
 horizontal: false
 ---
