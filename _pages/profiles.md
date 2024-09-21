@@ -18,12 +18,13 @@ profiles:
       <p>(+1)551-655-5059</p>
       <p>Jersey City, NJ</p>
       <p>xsun43@stevens.edu</p>
-  # - align: left
-  #   image: prof_pic.jpg
-  #   content: about_einstein.md
-  #   image_circular: false # crops the image to make it circular
-  #   more_info: >
-  #     <p>555 your office number</p>
-  #     <p>123 your address street</p>
-  #     <p>Your City, State 12345</p>
+  - align: left
+    image: zzx.jpg
+    content: about_zzx.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>张子雄</p>
+      <p>华中师范大学</p>
+      <p>湖北, 武汉</p>
+      <p>zhangzixiong@mails.ccnu.edu.cn</p>
 ---
