@@ -14,7 +14,7 @@ profiles:
     content: about_sxy.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>孙霄宇</p>
+      <p>孙霄宇\n</p>
       <p>(+1)551-655-5059</p>
       <p>Jersey City, NJ</p>
       <p>xsun43@stevens.edu</p>
@@ -23,8 +23,8 @@ profiles:
     content: about_zzx.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>张子雄</p>
-      <p>华中师范大学</p>
-      <p>湖北, 武汉</p>
+      <p>张子雄\n</p>
+      <p>华中师范大\n</p>
+      <p>湖北, 武汉\n</p>
       <p>zhangzixiong@mails.ccnu.edu.cn</p>
 ---
