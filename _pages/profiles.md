@@ -45,4 +45,13 @@ profiles:
       中国科学院大学</p>
       <p>浙江, 杭州</p>
       <p>1944457792@qq.com</p>
+  - align: right
+    image: ykz.jpg
+    content: friend/about_ykz.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>杨开展<br>
+      中国地质大学</p>
+      <p>湖北, 武汉</p>
+      <p>yangkzz803@gmail.com</p>
 ---
