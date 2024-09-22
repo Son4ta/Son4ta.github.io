@@ -11,20 +11,29 @@ profiles:
   # and create one content file for each profile inside _pages/
   - align: right
     image: sxy.jpg
-    content: about_sxy.md
+    content: friend/about_sxy.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>孙霄宇<br>
-      (+1)551-655-5059<br></p>
-      <p>Jersey City, NJ<br></p>
+      <p>孙霄宇</p>
+      <p>(+1)551-655-5059<br></p>
+      <p>Jersey City, NJ</p>
       <p>xsun43@stevens.edu</p>
   - align: left
     image: zzx.jpg
-    content: about_zzx.md
+    content: friend/about_zzx.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>张子雄<br>
-      华中师范大学<br>
-      湖北, 武汉<br>
-      zhangzixiong@mails.ccnu.edu.cn</p>
+      华中师范大学</p>
+      <p>湖北, 武汉</p>
+      <p>zhangzixiong@mails.ccnu.edu.cn</p>
+  - align: right
+    image: yjq.jpg
+    content: friend/about_yjq.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>叶姜祺<br>
+      北京电子科技学院</p>
+      <p>首都, 北京</p>
+      <p>nukesong@163.com</p>
 ---
