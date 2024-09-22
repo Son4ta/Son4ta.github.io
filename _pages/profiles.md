@@ -36,4 +36,13 @@ profiles:
       北京电子科技学院</p>
       <p>首都, 北京</p>
       <p>nukesong@163.com</p>
+  - align: left
+    image: szy.jpg
+    content: friend/about_szy.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>孙子禹<br>
+      中国科学院大学</p>
+      <p>浙江, 杭州</p>
+      <p>1944457792@qq.com</p>
 ---
