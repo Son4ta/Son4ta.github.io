@@ -4,7 +4,7 @@ title: 天鹅湖计划
 description: 为未来选择继续攻读Phd做准备，争取公派留学
 img: assets/img/csc.jpg
 importance: 4
-category: Long-term
+category: [Long-term, Engaging]
 ---
 
 暂时还没有内容
