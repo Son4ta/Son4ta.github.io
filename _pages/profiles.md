@@ -54,4 +54,13 @@ profiles:
       中国地质大学</p>
       <p>湖北, 武汉</p>
       <p>yangkzz803@gmail.com</p>
+  - align: left
+    image: tzj.jpg
+    content: friend/about_tzj.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>唐治江<br>
+      中国科学院大学</p>
+      <p>浙江, 杭州</p>
+      <p>tang_zhi_jiang@163.com</p>
 ---

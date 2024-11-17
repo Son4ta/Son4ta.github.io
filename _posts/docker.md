@@ -68,7 +68,7 @@ build
 docker build --network host -t rl_docker-main -f S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
 ```
 
-![image-20241004013549568](image-20241004013549568.png)
+![image-20241004013549568](./docker/image-20241004013549568.png)
 
 出现这个错误是因为在构建 Docker 镜像时，网络连接到 `http://archive.ubuntu.com/ubuntu` 失败，但是不应该啊？
 
@@ -96,7 +96,7 @@ RUN apt-get install -q -y --no-install-recommends wget \
 ```
 完美解决
 
-![image-20241004184052786](image-20241004184052786.png)
+![image-20241004184052786](./docker/image-20241004184052786.png)
 
 GPU不可用？
 ```apl
@@ -126,7 +126,7 @@ docker run -it --rm -v S:\Programming\rl_docker-main:/home/root/rl_ws --gpus=all
 ```
 setup.sh里的pip失败
 
-![image-20241005012110467](image-20241005012110467.png)
+![image-20241005012110467](./docker/image-20241005012110467.png)
 
 注释掉setup.sh里面不存在的文件就行，其实不是不存在，是要下载
 
@@ -149,7 +149,7 @@ python /home/root/rl_ws/run_dreamwaq.py --headless
 ```
 最终结果
 
-![image-20241005021400892](image-20241005021400892.png)
+![image-20241005021400892](./docker/image-20241005021400892.png)
 
 ```sh
 docker build --network host -t rl_docker-main -f S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
