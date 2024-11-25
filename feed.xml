@@ -1,4 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-11-18T08:24:30+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">WSL下配置DreamWqa环境</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="WSL下配置DreamWqa环境"/><published>2024-10-10T14:32:13+00:00</published><updated>2024-10-10T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>Job for docker.service failed because the control process exited with error code. 最后发现是之前用vim创建了个daemon.json</p> <p><a href="https://blog.csdn.net/zwlww1/article/details/129624289#:~:text=提示：Job">解决docker启动报错：Job for docker.service failed because the control process exited with error code-CSDN博客</a></p> <p>解决：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-11-25T03:44:59+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Ubuntu下Docker安装（显卡机，无sudo权限）</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="Ubuntu下Docker安装（显卡机，无sudo权限）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>卸载原来的docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove docker docker-engine docker.io containerd runc
+</code></pre></div></div> <p>安装依赖</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
+</code></pre></div></div> <p>添加 Docker 官方 GPG key</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#官方，挑战网络，做回自己（可能国内现在访问会存在问题）</span>
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
+<span class="c">#阿里</span>
+curl <span class="nt">-fsSL</span> https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
+</code></pre></div></div> <p>更新源</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Docker官方源</span>
+<span class="nb">echo</span> <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+
+<span class="c">#阿里apt源</span>
+<span class="nb">echo</span> <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+
+<span class="c">#更新源</span>
+apt update
+apt-get update
+</code></pre></div></div> <p>安装docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#安装最新版本的Docker</span>
+apt <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
+<span class="c">#等待安装完成</span>
+
+<span class="c">#查看Docker版本</span>
+docker version
+
+<span class="c">#启动服务</span>
+systemctl start docker
+
+<span class="c">#查看Docker运行状态</span>
+systemctl status docker
+</code></pre></div></div> <p>安装补全工具</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>bash-completion
+
+curl <span class="nt">-L</span> https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker <span class="nt">-o</span> /etc/bash_completion.d/docker.sh
+
+<span class="nb">source</span> /etc/bash_completion.d/docker.sh
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Docker安装]]></summary></entry><entry><title type="html">DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>在复现这个代码： <a href="https://github.com/Manaro-Alpha/DreamWaQ">DreamWaQ</a></p> <p>安装</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Manaro-Alpha/DreamWaQ.git
+pip <span class="nb">install</span> <span class="nt">-e</span> ./rsl_rl-1.0.2
+pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym
+</code></pre></div></div> <p>出现报错如下：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>torch<span class="o">)</span> root@wcivithvtopwwwpm-snow-f994bb78f-6f6wd:/data/coding/DreamWaQ# pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym/  
+Obtaining file:///data/coding/DreamWaQ/legged_gym
+  Preparing metadata <span class="o">(</span>setup.py<span class="o">)</span> ... <span class="k">done
+</span>INFO: pip is looking at multiple versions of legged-gym to determine which version is compatible with other requirements. This could take a <span class="k">while</span><span class="nb">.</span>
+ERROR: Could not find a version that satisfies the requirement isaacgym <span class="o">(</span>from legged-gym<span class="o">)</span> <span class="o">(</span>from versions: none<span class="o">)</span>
+ERROR: No matching distribution found <span class="k">for </span>isaacgym
+</code></pre></div></div> <p>先去下载安装包<a href="https://developer.nvidia.com/isaac-gym">安装包</a></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#解压</span>
+<span class="nb">tar</span> <span class="nt">-xzvf</span> IsaacGym_Preview_4_Package.tar.gz
+</code></pre></div></div> <p>关键！安装isaacgym</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-e</span> ./isaacgym/python/
+</code></pre></div></div> <p>再运行</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym/  
+</code></pre></div></div> <p>完美解决</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing collected packages: legged_gym
+  Running setup.py develop <span class="k">for </span>legged_gym
+Successfully installed legged_gym-1.0.0
+</code></pre></div></div> <p>ps:tensorboard要安装，Numpy版本也要调整</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>tensorboard
+pip uninstall numpy <span class="c">#不必要</span>
+pip <span class="nb">install </span><span class="nv">numpy</span><span class="o">==</span>1.23.5
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.24.4
+    Uninstalling numpy-1.24.4:
+      Successfully uninstalled numpy-1.24.4
+Successfully installed numpy-1.23.5
+</code></pre></div></div> <p>最后？</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
+</code></pre></div></div> <p>我就知道，又报错了！</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>torch<span class="o">)</span> root@wcivithvtopwwwpm-snow-f994bb78f-6f6wd:/data/coding/DreamWaQ# python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
+Importing module <span class="s1">'gym_38'</span> <span class="o">(</span>/data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so<span class="o">)</span>
+Setting GYM_USD_PLUG_INFO_PATH to /data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
+PyTorch version 1.11.0+cu113
+Device count 1
+/data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/src/gymtorch
+Using /data/.rootcache/torch_extensions/py38_cu113 as PyTorch extensions root...
+Emitting ninja build file /data/.rootcache/torch_extensions/py38_cu113/gymtorch/build.ninja...
+Building extension module gymtorch...
+Allowing ninja to <span class="nb">set </span>a default number of workers... <span class="o">(</span>overridable by setting the environment variable <span class="nv">MAX_JOBS</span><span class="o">=</span>N<span class="o">)</span>
+ninja: no work to <span class="k">do</span><span class="nb">.</span>
+Loading extension module gymtorch...
+Setting seed: 5
+Not connected to PVD
++++ Using GPU PhysX
+Physics Engine: PhysX
+Physics Device: cuda:0
+GPU Pipeline: enabled
+Segmentation fault <span class="o">(</span>core dumped<span class="o">)</span>
+</code></pre></div></div> <p>怎么办？只有杀！</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#只有杀！--headless</span>
+python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1 <span class="nt">--headless</span>
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">################################################################################</span>
+                       Learning iteration 90/3000                       
+
+                       Computation: 18159 steps/s <span class="o">(</span>collection: 4.440s, learning 0.973s<span class="o">)</span>
+               Value <span class="k">function </span>loss: 0.0032
+                    Surrogate loss: <span class="nt">-0</span>.0007
+             Autoenc <span class="k">function </span>loss: 5.9655
+             Mean action noise std: 0.56
+                       Mean reward: 3.77
+               Mean episode length: 507.48
+      Mean episode rew_action_rate: <span class="nt">-0</span>.0363
+       Mean episode rew_ang_vel_xy: <span class="nt">-0</span>.0621
+      Mean episode rew_base_height: <span class="nt">-0</span>.0049
+          Mean episode rew_dof_acc: <span class="nt">-0</span>.0483
+    Mean episode rew_feet_air_time: <span class="nt">-0</span>.0017
+      Mean episode rew_joint_power: <span class="nt">-0</span>.0007
+        Mean episode rew_lin_vel_z: <span class="nt">-0</span>.0197
+      Mean episode rew_orientation: <span class="nt">-0</span>.0623
+Mean episode rew_power_distribution: <span class="nt">-0</span>.0003
+       Mean episode rew_smoothness: <span class="nt">-0</span>.0062
+ Mean episode rew_tracking_ang_vel: 0.1954
+ Mean episode rew_tracking_lin_vel: 0.2059
+        Mean episode terrain_level: 0.2157
+<span class="nt">--------------------------------------------------------------------------------</span>
+                   Total timesteps: 8945664
+                    Iteration <span class="nb">time</span>: 5.41s
+                        Total <span class="nb">time</span>: 429.71s
+                               ETA: 13741.3s
+</code></pre></div></div> <p>TODO:如果你有崭新的显卡！请尝试重新安装驱动！<a href="https://blog.csdn.net/ggggfff1/article/details/135487322">参考</a></p>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Isaac Gym安装教程，艾西古，最喜欢的一集嗷，debug爽！Tesla P4，老爷机就是牛！]]></summary></entry><entry><title type="html">WSL下配置DreamWqa环境</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="WSL下配置DreamWqa环境"/><published>2024-10-10T14:32:13+00:00</published><updated>2024-10-10T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>Job for docker.service failed because the control process exited with error code. 最后发现是之前用vim创建了个daemon.json</p> <p><a href="https://blog.csdn.net/zwlww1/article/details/129624289#:~:text=提示：Job">解决docker启动报错：Job for docker.service failed because the control process exited with error code-CSDN博客</a></p> <p>解决：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
 </code></pre></div></div> <p>启动docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> systemctl start docker
 </code></pre></div></div> <p>因为正常执行build大概率会因为网络问题翻车</p> <pre>[+] Building 0.3s (3/3) FINISHED                                                                
 <font color="#3465A4"> =&gt; [internal] load .dockerignore                                                          0.0s</font>
