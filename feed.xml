@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-11-28T09:09:34+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Ubuntu下Docker安装（显卡机，无sudo权限）</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="Ubuntu下Docker安装（显卡机，无sudo权限）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>卸载原来的docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove docker docker-engine docker.io containerd runc
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-12-02T07:54:56+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">记录我在怎么调查文献/综述</title><link href="https://son4ta.github.io/blog/2024/survey/" rel="alternate" type="text/html" title="记录我在怎么调查文献/综述"/><published>2024-11-28T17:32:13+00:00</published><updated>2024-11-28T17:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/survey</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/survey/"><![CDATA[<h2 id="首先是标题">首先是标题</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.确定关键词+survey、review
+2.谷歌学术 bing
+</code></pre></div></div> <h2 id="然后是ai工具">然后是AI工具</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TODO
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="GPT"/><category term="Prompt"/><category term="LLM"/><summary type="html"><![CDATA[不是哥们，英雄联盟有survey和review这个英雄吗？]]></summary></entry><entry><title type="html">记录我在使用ChatGPT时，觉得效果好的提示词</title><link href="https://son4ta.github.io/blog/2024/prompt/" rel="alternate" type="text/html" title="记录我在使用ChatGPT时，觉得效果好的提示词"/><published>2024-11-28T14:32:13+00:00</published><updated>2024-11-28T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/prompt</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/prompt/"><![CDATA[<p>先来一个<a href="https://markdown.com.cn/basic-syntax/htmls.html">md教程</a></p> <h2 id="提示词">提示词</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Role:
+
+Task:
+Instruction：
+Request:
+Action:
+Steps:
+Requirements:
+
+Context：
+Example:
+Input：
+
+Output：
+
+</code></pre></div></div> <h2 id="搜索文献">搜索文献</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Role:
+
+你是一名多模态翻译研究的资深专家，专注于该领域的前沿发展与研究进展。
+
+Task:
+
+请通过联网功能，提供5篇关于“多模态话语分析理论在翻译研究中的应用情况”的代表性权威文献。我们希望通过这些文献了解当前多模态话语分析理论在翻译研究中的应用情况。
+
+Requirements:
+
+（1）数据来源：
+
+   ◦ 请从主流、权威的学术数据库或期刊网站上选择文章。
+
+   ◦ 文章需来自同行评审的期刊或会议论文集。
+
+注意:不要凭空捏造文献
+
+（2）文献选择标准：
+
+   ◦ 高引用率：优先选择引用次数较高的文献，以确保文章的影响力和可信度。
+
+   ◦ 代表性作者：尽量选择由领域内知名学者、理论创始人或有重要贡献的作者撰写的文章。
+
+   ◦ 研究进展：确保文献能够反映多模态翻译研究领域的最新进展或关键理论。
+
+Output：
+
+   ◦ 每篇文献应包含以下信息：
+
+       ▪ 文章摘要。
+
+       ▪ 文章来源链接，以便查阅全文。
+</code></pre></div></div> <p>重复上述操作，获取更多文献······</p> <h2 id="分析综述文献todo能不能不上传附件">分析、综述文献（TODO：能不能不上传附件，）</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Task:
+
+请你帮助我总结并分析附件中9篇文章的内容，并撰写文献综述，重点聚焦于多模态话语分析理论与翻译研究。
+
+Request:
+
+（1）文章内容总结与分类:
+
+对每篇文章的核心内容进行简明扼要的总结。
+
+根据文章的主题，将9篇文章的内容进行分类，分类数量不超过3个。避免分类的交叉和重复。
+
+每个分类下请注明文章的来源信息（包括作者及年份）。
+
+
+（2）文献综述撰写:
+
+基于分类撰写一个逻辑连贯的文献综述段落，重点关注多模态话语分析理论与翻译研究。
+
+文献综述应包括以下内容：
+
+国外对多模态话语分析理论的研究现状，分类情况及各分类的主要内容。
+
+多模态话语分析理论在翻译研究中的应用。
+
+当前研究中可能存在的不足或空白。
+
+Action:
+
+（1）对9篇文章进行内容总结与分类。
+
+（2）根据分类及文章内容撰写文献综述，结合“多模态话语分析理论与翻译研究”的主题。
+
+Context:
+
+这9篇文章将以附件形式提供给你，你仅需基于文章本身的内容进行总结与分析，不进行超出范围的拓展分析。重点放在国外学者对多模态话语分析理论的研究以及其在翻译研究中的应用。
+
+Example:
+
+文献综述分为两段：
+
+第一段为：国外关于多模态话语分析理论的研究可以分为X种情况，包括（分类1、分类2等）。在每个分类中，国外学者主要关注了A、B、C等内容。例如，某某学者（年份）提出了……。整体来看，国外学者普遍将多模态话语分析理论应用于如下几类翻译研究：文本翻译、视听翻译、跨文化翻译等。
+
+第二段为：然而，现有研究中仍然存在一些空白，主要表现在……。
+
+
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="GPT"/><category term="Prompt"/><category term="LLM"/><summary type="html"><![CDATA[使用ChatGPT-4o，这是一个实验性的文档，因为之前我其实一直不喜欢这种“提示词工程”，可能真香了hh]]></summary></entry><entry><title type="html">Ubuntu下Docker安装（显卡机，无sudo权限）</title><link href="https://son4ta.github.io/blog/2024/2/" rel="alternate" type="text/html" title="Ubuntu下Docker安装（显卡机，无sudo权限）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/2</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/2/"><![CDATA[<p>卸载原来的docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove docker docker-engine docker.io containerd runc
 </code></pre></div></div> <p>安装依赖</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
 </code></pre></div></div> <p>添加 Docker 官方 GPG key</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#官方，挑战网络，做回自己（可能国内现在访问会存在问题）</span>
 curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
@@ -30,7 +128,7 @@ systemctl status docker
 curl <span class="nt">-L</span> https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker <span class="nt">-o</span> /etc/bash_completion.d/docker.sh
 
 <span class="nb">source</span> /etc/bash_completion.d/docker.sh
-</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Docker安装]]></summary></entry><entry><title type="html">DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>在复现这个代码： <a href="https://github.com/Manaro-Alpha/DreamWaQ">DreamWaQ</a></p> <p>安装</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Manaro-Alpha/DreamWaQ.git
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Docker安装]]></summary></entry><entry><title type="html">DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）</title><link href="https://son4ta.github.io/blog/2024/3/" rel="alternate" type="text/html" title="DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/3</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/3/"><![CDATA[<p>在复现这个代码： <a href="https://github.com/Manaro-Alpha/DreamWaQ">DreamWaQ</a></p> <p>安装</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Manaro-Alpha/DreamWaQ.git
 pip <span class="nb">install</span> <span class="nt">-e</span> ./rsl_rl-1.0.2
 pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym
 </code></pre></div></div> <p>出现报错如下：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>torch<span class="o">)</span> root@wcivithvtopwwwpm-snow-f994bb78f-6f6wd:/data/coding/DreamWaQ# pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym/  
@@ -105,7 +203,7 @@ Mean episode rew_power_distribution: <span class="nt">-0</span>.0003
                     Iteration <span class="nb">time</span>: 5.41s
                         Total <span class="nb">time</span>: 429.71s
                                ETA: 13741.3s
-</code></pre></div></div> <p>TODO:如果你有崭新的显卡！请尝试重新安装驱动！<a href="https://blog.csdn.net/ggggfff1/article/details/135487322">参考</a></p>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Isaac Gym安装教程，艾西古，最喜欢的一集嗷，debug爽！Tesla P4，老爷机就是牛！]]></summary></entry><entry><title type="html">WSL下配置DreamWqa环境</title><link href="https://son4ta.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="WSL下配置DreamWqa环境"/><published>2024-10-10T14:32:13+00:00</published><updated>2024-10-10T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/tabs</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/tabs/"><![CDATA[<p>Job for docker.service failed because the control process exited with error code. 最后发现是之前用vim创建了个daemon.json</p> <p><a href="https://blog.csdn.net/zwlww1/article/details/129624289#:~:text=提示：Job">解决docker启动报错：Job for docker.service failed because the control process exited with error code-CSDN博客</a></p> <p>解决：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
+</code></pre></div></div> <p>TODO:如果你有崭新的显卡！请尝试重新安装驱动！<a href="https://blog.csdn.net/ggggfff1/article/details/135487322">参考</a></p>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Isaac Gym安装教程，艾西古，最喜欢的一集嗷，debug爽！Tesla P4，老爷机就是牛！]]></summary></entry><entry><title type="html">WSL下配置DreamWqa环境</title><link href="https://son4ta.github.io/blog/2024/1/" rel="alternate" type="text/html" title="WSL下配置DreamWqa环境"/><published>2024-10-10T14:32:13+00:00</published><updated>2024-10-10T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/1</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/1/"><![CDATA[<p>Job for docker.service failed because the control process exited with error code. 最后发现是之前用vim创建了个daemon.json</p> <p><a href="https://blog.csdn.net/zwlww1/article/details/129624289#:~:text=提示：Job">解决docker启动报错：Job for docker.service failed because the control process exited with error code-CSDN博客</a></p> <p>解决：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
 </code></pre></div></div> <p>启动docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> systemctl start docker
 </code></pre></div></div> <p>因为正常执行build大概率会因为网络问题翻车</p> <pre>[+] Building 0.3s (3/3) FINISHED                                                                
 <font color="#3465A4"> =&gt; [internal] load .dockerignore                                                          0.0s</font>
