@@ -1,6 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-12-02T07:54:56+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">记录我在怎么调查文献/综述</title><link href="https://son4ta.github.io/blog/2024/survey/" rel="alternate" type="text/html" title="记录我在怎么调查文献/综述"/><published>2024-11-28T17:32:13+00:00</published><updated>2024-11-28T17:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/survey</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/survey/"><![CDATA[<h2 id="首先是标题">首先是标题</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.确定关键词+survey、review
-2.谷歌学术 bing
-</code></pre></div></div> <h2 id="然后是ai工具">然后是AI工具</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TODO
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-12-20T07:14:50+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">ISAAC SIM 安装</title><link href="https://son4ta.github.io/blog/2024/isaac/" rel="alternate" type="text/html" title="ISAAC SIM 安装"/><published>2024-12-19T21:32:13+00:00</published><updated>2024-12-19T21:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/isaac</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/isaac/"><![CDATA[<p>这里假设你在创建环境时已经搞定了pytorch、cuda，没有的话，安装最高版本就行（目前是2.4.0）</p> <p>(具体教程)[https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html]</p> <h2 id="首先pip安装issac-sim">首先，pip安装Issac Sim</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu118</span>
+
+pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+
+pip <span class="nb">install </span><span class="nv">isaacsim</span><span class="o">==</span>4.2.0.2 isaacsim-extscache-physics<span class="o">==</span>4.2.0.2 isaacsim-extscache-kit<span class="o">==</span>4.2.0.2 isaacsim-extscache-kit-sdk<span class="o">==</span>4.2.0.2 <span class="nt">--extra-index-url</span> https://pypi.nvidia.com
+
+pip <span class="nb">install </span>isaacsim-rl isaacsim-replicator isaacsim-extscache-physics isaacsim-extscache-kit-sdk isaacsim-extscache-kit isaacsim-app <span class="nt">--extra-index-url</span> https://pypi.nvidia.com
+
+<span class="c">#测试是否安装成功</span>
+isaacsim 
+<span class="c">#没有root权限的话 isaacsim --allow-root</span>
+</code></pre></div></div> <p>然后同意协议，等一会，他会下载一些注册表之类的东西</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>By installing or using Isaac Sim, I agree to the terms of NVIDIA OMNIVERSE LICENSE AGREEMENT <span class="o">(</span>EULA<span class="o">)</span>
+<span class="k">in </span>https://docs.omniverse.nvidia.com/isaacsim/latest/common/NVIDIA_Omniverse_License_Agreement.html
+
+Do you accept the EULA? <span class="o">(</span>Yes/No<span class="o">)</span>: Yes
+
+<span class="o">[</span>Info] <span class="o">[</span>carb] Logging to file: /root/.nvidia-omniverse/logs/Kit/omni.app.mini/0.1/kit_20241220_101512.log
+2024-12-20 02:15:12 <span class="o">[</span>0ms] <span class="o">[</span>Warning] <span class="o">[</span>omni.kit.app.plugin] No crash reporter present, dumps uploading isn<span class="s1">'t available.
+[0.074s] Failed to solve some dependencies locally, syncing with extension registry...
+[0.076s] [ext: omni.kit.async_engine-0.0.1] startup
+[0.081s] [ext: omni.client-1.2.0] startup
+[0.131s] [ext: omni.kit.registry.nucleus-0.0.0] startup
+# ......
+[7042.665s] [ext: omni.kit.clipboard-1.0.4] startup
+[7042.666s] [ext: omni.kit.window.extensions-1.4.11] startup
+[7042.715s] [ext: omni.app.mini-0.1.1] startup
+[7042.733s] app ready
+嫩久啊
+</span></code></pre></div></div> <p>然后用<code class="language-plaintext highlighter-rouge">谷歌学术</code>搜到一些看起来很吊的一篇文章</p> <h2 id="然后是isaac-lab">然后是Isaac Lab</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:isaac-sim/IsaacLab.git
+
+<span class="nb">sudo </span>apt <span class="nb">install </span>cmake build-essential
+</code></pre></div></div> <p>然后安装RL框架，这里是可选的将安装所有学习框架</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>isaaclab
+<span class="c"># 有可能会-bash: ./isaaclab.sh: Permission denied</span>
+<span class="c"># chmod -R 777 isaaclab.sh # sudo chmod -R 777 isaaclab.sh</span>
+<span class="c"># 全部框架</span>
+./isaaclab.sh <span class="nt">--install</span> <span class="c"># or "./isaaclab.sh -i"</span>
+<span class="c"># 只安装rl_games</span>
+./isaaclab.sh <span class="nt">--install</span> rl_games
+<span class="c"># 可选：rsl_rl  ​sb3  ​skrl  robomimic  none</span>
+<span class="c"># 我在这里出现了网络错误，连不上git，但是过一会又好了，推测需要设置代理，即修改etc/host文件</span>
+20.205.243.166 github.com
+20.205.243.166 gist.github.com
+<span class="c"># 然后ping一下github，这边建议再更新一下什么dns host缓存</span>
+ping github.com
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Robotic"/><category term="Issac"/><category term="RL"/><summary type="html"><![CDATA[记录我在服务器上安装issac sim与lab]]></summary></entry><entry><title type="html">记录我在怎么调查文献/综述</title><link href="https://son4ta.github.io/blog/2024/survey/" rel="alternate" type="text/html" title="记录我在怎么调查文献/综述"/><published>2024-11-28T17:32:13+00:00</published><updated>2024-11-28T17:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/survey</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/survey/"><![CDATA[<p>现在假设，你跟写这篇文章3天前的我一样迷茫，累的嘴角流口水，你应该遵循什么样的标准流程去搜索文献呢？ 这里我们以我最近的方向为例，我现在需要调查<code class="language-plaintext highlighter-rouge">四足机器人</code>这个方向</p> <p>你当然可以、、</p> <h2 id="第一步确定关键词找到一个切入点">第一步——确定关键词找到一个切入点</h2> <p>我现在需要调查<code class="language-plaintext highlighter-rouge">四足机器人</code>，首先我要知道我如何搜索相关的文章， 配合使用<code class="language-plaintext highlighter-rouge">ChatGPT</code>、<code class="language-plaintext highlighter-rouge">腾讯元宝</code>、<code class="language-plaintext highlighter-rouge">有道</code>等工具</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.Quadrupedal
+2.Robots
+3.quadruped
+</code></pre></div></div> <p>然后用<code class="language-plaintext highlighter-rouge">谷歌学术</code>搜到一些看起来很吊的一篇文章</p> <h2 id="然后是ai工具">然后是AI工具</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="GPT"/><category term="Prompt"/><category term="LLM"/><summary type="html"><![CDATA[不是哥们，英雄联盟有survey和review这个英雄吗？]]></summary></entry><entry><title type="html">记录我在使用ChatGPT时，觉得效果好的提示词</title><link href="https://son4ta.github.io/blog/2024/prompt/" rel="alternate" type="text/html" title="记录我在使用ChatGPT时，觉得效果好的提示词"/><published>2024-11-28T14:32:13+00:00</published><updated>2024-11-28T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/prompt</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/prompt/"><![CDATA[<p>先来一个<a href="https://markdown.com.cn/basic-syntax/htmls.html">md教程</a></p> <h2 id="提示词">提示词</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Role:
 
 Task:
