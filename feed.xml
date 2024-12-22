@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-12-20T09:16:26+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">ISAAC SIM 安装</title><link href="https://son4ta.github.io/blog/2024/isaac/" rel="alternate" type="text/html" title="ISAAC SIM 安装"/><published>2024-12-19T21:32:13+00:00</published><updated>2024-12-19T21:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/isaac</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/isaac/"><![CDATA[<p>这里假设你在创建环境时已经搞定了pytorch、cuda，没有的话，安装最高版本就行（目前是2.4.0）</p> <p>(具体教程)[https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html]</p> <h2 id="首先pip安装issac-sim">首先，pip安装Issac Sim</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu118</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2024-12-22T16:03:06+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">ISAAC SIM 安装</title><link href="https://son4ta.github.io/blog/2024/isaac/" rel="alternate" type="text/html" title="ISAAC SIM 安装"/><published>2024-12-19T21:32:13+00:00</published><updated>2024-12-19T21:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/isaac</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/isaac/"><![CDATA[<p>这里假设你在创建环境时已经搞定了pytorch、cuda，没有的话，安装最高版本就行（目前是2.4.0）</p> <p>(具体教程)[https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html]</p> <h2 id="首先pip安装issac-sim">首先，pip安装Issac Sim</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu118</span>
 
 pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
 
 pip <span class="nb">install </span><span class="nv">isaacsim</span><span class="o">==</span>4.2.0.2 isaacsim-extscache-physics<span class="o">==</span>4.2.0.2 isaacsim-extscache-kit<span class="o">==</span>4.2.0.2 isaacsim-extscache-kit-sdk<span class="o">==</span>4.2.0.2 <span class="nt">--extra-index-url</span> https://pypi.nvidia.com
-
+<span class="c"># 最小安装包</span>
 pip <span class="nb">install </span>isaacsim-rl isaacsim-replicator isaacsim-extscache-physics isaacsim-extscache-kit-sdk isaacsim-extscache-kit isaacsim-app <span class="nt">--extra-index-url</span> https://pypi.nvidia.com
 
 <span class="c">#测试是否安装成功</span>
@@ -26,7 +26,11 @@ Do you accept the EULA? <span class="o">(</span>Yes/No<span class="o">)</span>: 
 [7042.715s] [ext: omni.app.mini-0.1.1] startup
 [7042.733s] app ready
 嫩久啊
-</span></code></pre></div></div> <p>然后用<code class="language-plaintext highlighter-rouge">谷歌学术</code>搜到一些看起来很吊的一篇文章</p> <h2 id="然后是isaac-lab">然后是Isaac Lab</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:isaac-sim/IsaacLab.git
+</span></code></pre></div></div> <h2 id="然后是isaac-lab">然后是Isaac Lab</h2> <p>说在前面：(git 克隆第三方库 有的时候需要ssh key 权限 有的时候又不要 ，怎么回事呢)[https://blog.csdn.net/qq_30545831/article/details/98944572] 公开库的克隆是可以不要权限的，但是你得找到长的像这样的地址：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/CodeHubApp/CodeHub.git   //这种方法不需要ssh key权限
+git clone git@github.com:CodeHubApp/CodeHub.git       //这种克隆方法，你需要把自己的key添加到别人的远程库里面
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/isaac-sim/IsaacLab.git
+<span class="c"># 我在这里出现了git网络错误，但是过一会又好了，推测需要设置host，即修改etc/host文件</span>
+<span class="c"># 可以试试http git clone http://github.com/isaac-sim/IsaacLab.git</span>
 
 <span class="nb">sudo </span>apt <span class="nb">install </span>cmake build-essential
 </code></pre></div></div> <p>然后安装RL框架，这里是可选的将安装所有学习框架</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>isaaclab
@@ -45,12 +49,6 @@ Do you accept the EULA? <span class="o">(</span>Yes/No<span class="o">)</span>: 
 <span class="c"># Option 2: Using python in your virtual environment</span>
 python <span class="nb">source</span>/standalone/tutorials/00_sim/create_empty.py
 
-
-<span class="c"># 我在这里出现了git网络错误，但是过一会又好了，推测需要设置host，即修改etc/host文件</span>
-20.205.243.166 github.com
-20.205.243.166 gist.github.com
-<span class="c"># 然后ping一下github，这边建议再更新一下什么dns host缓存</span>
-ping github.com
 </code></pre></div></div> <h2 id="机械臂例程">机械臂例程</h2> <p>这里参考(robot_lab)[https://github.com/fan-ziqi/robot_lab]</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 独立于 Isaac Lab 安装克隆存储库（即在目录外）IsaacLab</span>
 git clone https://github.com/fan-ziqi/robot_lab.git
 <span class="c"># 使用安装了 Isaac Lab 的 python 解释器，安装库</span>
@@ -59,18 +57,46 @@ python <span class="nt">-m</span> pip <span class="nb">install</span> <span clas
 python scripts/tools/list_envs.py
 </code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python scripts/rsl_rl/base/train.py <span class="nt">--task</span> RobotLab-Isaac-Velocity-Flat-Unitree-G1-v0 <span class="nt">--headless</span> <span class="nt">--video</span> <span class="nt">--video_length</span> 100 <span class="nt">--video_interval</span> 500 <span class="nt">--num_envs</span> 32 <span class="nt">--max_iterations</span> 10000
 python3 scripts/rsl_rl/train.py <span class="nt">--task</span> Template-Isaac-Reach-UR10-v0 <span class="nt">--num_envs</span> 4096 <span class="nt">--headless</span> <span class="nt">--video</span> <span class="nt">--video_length</span> 100 <span class="nt">--max_iterations</span> 10
-</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Robotic"/><category term="Issac"/><category term="RL"/><summary type="html"><![CDATA[记录我在服务器上安装issac sim与lab]]></summary></entry><entry><title type="html">【服务器远程桌面】安装ubuntu-desktop与Xrdp</title><link href="https://son4ta.github.io/blog/2024/ubuntu-desktop/" rel="alternate" type="text/html" title="【服务器远程桌面】安装ubuntu-desktop与Xrdp"/><published>2024-12-19T21:32:13+00:00</published><updated>2024-12-19T21:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/ubuntu-desktop</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/ubuntu-desktop/"><![CDATA[<p>我叼，没桌面太难受了，怎么办？</p> <p>(具体教程)[https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html]</p> <h2 id="首先pip安装gnome与xfce">首先，pip安装Gnome与Xfce</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Robotic"/><category term="Issac"/><category term="RL"/><summary type="html"><![CDATA[记录我在服务器上安装issac sim与lab]]></summary></entry><entry><title type="html">【FunHPC服务器远程桌面】安装x11、桌面环境和vncserver</title><link href="https://son4ta.github.io/blog/2024/ubuntu-desktop/" rel="alternate" type="text/html" title="【FunHPC服务器远程桌面】安装x11、桌面环境和vncserver"/><published>2024-12-19T21:32:13+00:00</published><updated>2024-12-19T21:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/ubuntu-desktop</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/ubuntu-desktop/"><![CDATA[<p>我叼，没桌面太难受了，怎么办？</p> <p>(具体教程，FunHPC官方文档)[https://www.funhpc.com/?msclkid=279b82507c861dc09fbee5678c99ce10#/documentation/Exampleflow/vncserver]</p> <h2 id="首先pip安装x11桌面环境和tightvncserver">首先，pip安装x11、桌面环境和tightvncserver</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="nb">sudo </span>apt update
 <span class="nb">sudo </span>apt-get upgrade
-<span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-desktop
+<span class="c"># 安装x11</span>
+apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install </span>xorg openbox <span class="nt">-y</span>
+<span class="c"># 安装面环境</span>
+apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install </span>xfce4 xfce4-goodies <span class="nt">-y</span>
+<span class="c"># 安装tightvncserver</span>
+apt-get <span class="nb">install </span>tightvncserver <span class="nt">-y</span>
+<span class="c"># vncserver 进程需要依赖用户环境变量 USER</span>
+<span class="nb">export </span><span class="nv">USER</span><span class="o">=</span>root 
+</code></pre></div></div> <h2 id="vnc配置">VNC配置</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 当输入完之后继续在终端输入vncserver，用来配置密码</span>
+vncserver
+...配置密码
 
-<span class="nb">sudo </span>apt <span class="nb">install </span>xubuntu-desktop
-</code></pre></div></div> <h2 id="然后是安装-xrdp">然后是安装 Xrdp</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>xrdp
-<span class="c"># 一旦安装完成，Xrdp 服务将会自动启动。你可以输入下面的命令，验证它：</span>
-<span class="nb">sudo </span>systemctl status xrdp
-<span class="c"># SysVinit：如果您的系统使用 SysVinit 作为 init 系统</span>
-<span class="nb">sudo </span>service xrdp status
-</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Remote"/><category term="Desktop"/><category term="Ubuntu"/><summary type="html"><![CDATA[记录我在服务器上安装ubuntu-desktop与Xrdp]]></summary></entry><entry><title type="html">记录我在怎么调查文献/综述</title><link href="https://son4ta.github.io/blog/2024/survey/" rel="alternate" type="text/html" title="记录我在怎么调查文献/综述"/><published>2024-11-28T17:32:13+00:00</published><updated>2024-11-28T17:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/survey</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/survey/"><![CDATA[<p>现在假设，你跟写这篇文章3天前的我一样迷茫，累的嘴角流口水，你应该遵循什么样的标准流程去搜索文献呢？ 这里我们以我最近的方向为例，我现在需要调查<code class="language-plaintext highlighter-rouge">四足机器人</code>这个方向</p> <p>你当然可以、、</p> <h2 id="第一步确定关键词找到一个切入点">第一步——确定关键词找到一个切入点</h2> <p>我现在需要调查<code class="language-plaintext highlighter-rouge">四足机器人</code>，首先我要知道我如何搜索相关的文章， 配合使用<code class="language-plaintext highlighter-rouge">ChatGPT</code>、<code class="language-plaintext highlighter-rouge">腾讯元宝</code>、<code class="language-plaintext highlighter-rouge">有道</code>等工具</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.Quadrupedal
+<span class="c"># 停止刚刚新建的虚拟化桌面 配置VNC Server</span>
+vncserver <span class="nt">-kill</span> :1
+</code></pre></div></div> <h2 id="配置vnc-server">配置VNC Server</h2> <p>修改xstartup文件</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.vnc/xstartup
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">i</code>编辑、 <code class="language-plaintext highlighter-rouge">esc</code>退出、 <code class="language-plaintext highlighter-rouge">:wq</code>保存</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 将下面的内容加入到xstartup文件的后面</span>
+xrdb <span class="nv">$HOME</span>/.Xresources 
+startxfce4 &amp;
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x ~/.vnc/xstartup
+</code></pre></div></div> <p>启动新的虚拟化桌面</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vncserver <span class="nt">-geometry</span> 1280x960
+</code></pre></div></div> <h2 id="配置本地计算机">配置<code class="language-plaintext highlighter-rouge">本地</code>计算机</h2> <p>请注意！是本地，即你的电脑，笨蛋</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-p</span> 端口号 <span class="nt">-NL</span> 5901:localhost:5901 网址
+<span class="c"># eg</span>
+ssh <span class="nt">-p</span> 41536 <span class="nt">-NL</span> 5901:localhost:5901 root@5fwng6ia9oqm2c1nsnow.deepln.com
+</code></pre></div></div> <p>当你输入密码后，什么也不显示也没有发生报错，就表示已经完成本地端口转发。</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:<span class="se">\U</span>sers<span class="se">\x</span>xxx&gt;ssh <span class="nt">-p</span> 41536 <span class="nt">-NL</span> 5901:localhost:5901 root@5fwng6ia9oqm2c1nsnow.deepln.com
+The authenticity of host <span class="s1">'[5fwng6ia9oqm2c1nsnow.deepln.com]:41536 ([111.6.167.250]:41536)'</span> can<span class="s1">'t be established.
+ED25519 key fingerprint is SHA256:P9xKXT5+v0JHtUvyqT3E0zlAA1p0UbLn2J5c2tFsoN8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '</span><span class="o">[</span>5fwng6ia9oqm2c1nsnow.deepln.com]:41536<span class="s1">' (ED25519) to the list of known hosts.
+root@5fwng6ia9oqm2c1nsnow.deepln.com'</span>s password:
+Permission denied, please try again.
+root@5fwng6ia9oqm2c1nsnow.deepln.com<span class="s1">'s password:（右键可以复制）
+# 这里什么都没有，只有回车，就对了
+</span></code></pre></div></div> <h2 id="本地安装vcn">本地安装VCN</h2> <p>(本地安装VCN Viewer)[https://www.realvnc.com/en/connect/download/viewer] 打开VNC Viewer，输入VNC Viewer及用户名。</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#输入VNC Viewer及Name</span>
+VNC Viewer:localhost:5901
+Name:root
+</code></pre></div></div> <p>输入密码，自此，完成了VNC可视化容器实例。</p>]]></content><author><name></name></author><category term="Experience"/><category term="Remote"/><category term="Desktop"/><category term="Ubuntu"/><summary type="html"><![CDATA[记录我在FunHPC服务器上安装远程桌面]]></summary></entry><entry><title type="html">记录我在怎么调查文献/综述</title><link href="https://son4ta.github.io/blog/2024/survey/" rel="alternate" type="text/html" title="记录我在怎么调查文献/综述"/><published>2024-11-28T17:32:13+00:00</published><updated>2024-11-28T17:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/survey</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/survey/"><![CDATA[<p>现在假设，你跟写这篇文章3天前的我一样迷茫，累的嘴角流口水，你应该遵循什么样的标准流程去搜索文献呢？ 这里我们以我最近的方向为例，我现在需要调查<code class="language-plaintext highlighter-rouge">四足机器人</code>这个方向</p> <p>你当然可以、、</p> <h2 id="第一步确定关键词找到一个切入点">第一步——确定关键词找到一个切入点</h2> <p>我现在需要调查<code class="language-plaintext highlighter-rouge">四足机器人</code>，首先我要知道我如何搜索相关的文章， 配合使用<code class="language-plaintext highlighter-rouge">ChatGPT</code>、<code class="language-plaintext highlighter-rouge">腾讯元宝</code>、<code class="language-plaintext highlighter-rouge">有道</code>等工具</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.Quadrupedal
 2.Robots
 3.quadruped
 </code></pre></div></div> <p>然后用<code class="language-plaintext highlighter-rouge">谷歌学术</code>搜到一些看起来很吊的一篇文章</p> <h2 id="然后是ai工具">然后是AI工具</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
