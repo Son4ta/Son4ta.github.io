@@ -9,7 +9,7 @@ tabs: true
 ---
 我叼，没桌面太难受了，怎么办？
 
-(具体教程，FunHPC官方文档)[https://www.funhpc.com/?msclkid=279b82507c861dc09fbee5678c99ce10#/documentation/Exampleflow/vncserver]
+[具体教程，FunHPC官方文档](https://www.funhpc.com/?msclkid=279b82507c861dc09fbee5678c99ce10#/documentation/Exampleflow/vncserver)
 
 ## 首先，pip安装x11、桌面环境和tightvncserver
 ```shell
@@ -75,7 +75,7 @@ root@5fwng6ia9oqm2c1nsnow.deepln.com's password:（右键可以复制）
 ```
 
 ## 本地安装VCN
-(本地安装VCN Viewer)[https://www.realvnc.com/en/connect/download/viewer]
+[本地安装VCN Viewer](https://www.realvnc.com/en/connect/download/viewer)
 打开VNC Viewer，输入VNC Viewer及用户名。
 ```shell
 #输入VNC Viewer及Name
