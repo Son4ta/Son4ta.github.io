@@ -32,7 +32,8 @@ Successfully installed numpy-1.23.5
 </code></pre></div></div> <p>最后？</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
 <span class="c">#  如果需要改GPU</span>
 <span class="nt">--graphics_device_id</span> 1 <span class="nt">--sim_device</span> cuda:1
-</code></pre></div></div> <p>我就知道，又报错了！</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>torch<span class="o">)</span> root@wcivithvtopwwwpm-snow-f994bb78f-6f6wd:/data/coding/DreamWaQ# python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
+<span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span>1 
+</code></pre></div></div> <p>如果你的显卡没有图形化或者有多张显卡使用了<code class="language-plaintext highlighter-rouge">CUDA_VISIBLE_DEVICES=1</code>的情况下，可能会出现下面的情况，使用<code class="language-plaintext highlighter-rouge">--headless</code>来避免：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>torch<span class="o">)</span> root@wcivithvtopwwwpm-snow-f994bb78f-6f6wd:/data/coding/DreamWaQ# python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
 Importing module <span class="s1">'gym_38'</span> <span class="o">(</span>/data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so<span class="o">)</span>
 Setting GYM_USD_PLUG_INFO_PATH to /data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
 PyTorch version 1.11.0+cu113
