@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2025-02-27T08:38:48+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">服务器使用——Tmux 保活进程</title><link href="https://son4ta.github.io/blog/2025/how-to-write-a-blog/" rel="alternate" type="text/html" title="服务器使用——Tmux 保活进程"/><published>2025-01-12T17:56:13+00:00</published><updated>2025-01-12T17:56:13+00:00</updated><id>https://son4ta.github.io/blog/2025/how-to-write-a-blog</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/how-to-write-a-blog/"><![CDATA[<p>我叼，我练了一半你跟我说进程挂了，忍不了</p> <h2 id="tmux">Tmux?</h2> <p>命令行的典型使用方式是，打开一个终端窗口（terminal window，以下简称”窗口”），在里面输入命令。用户与计算机的这种临时的交互，称为一次”会话”（session） 。</p> <p>会话的一个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完。</p> <p>一个典型的例子就是，SSH 登录远程计算机，打开一个远程窗口执行命令。这时，网络突然断线，再次登录的时候，是找不回上一次执行的命令的。因为上一次 SSH 会话已经终止了，里面的进程也随之消失了。</p> <p>为了解决这个问题，会话与窗口可以”解绑”：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话”绑定”其他窗口。 Tmux 就是会话与窗口的”解绑”工具，将它们彻底分离。</p> <p>（1）它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。</p> <p>（2） 它可以让新窗口”接入”已经存在的会话。</p> <p>（3）它允许每个会话有多个连接窗口，因此可以多人实时共享会话。</p> <p>（4）它还支持窗口任意的垂直和水平拆分。</p> <h2 id="使用">使用</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 新建会话</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2025-04-25T09:12:06+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">AutoDL最佳实践</title><link href="https://son4ta.github.io/blog/2025/1-autoDL/" rel="alternate" type="text/html" title="AutoDL最佳实践"/><published>2025-04-19T14:32:13+00:00</published><updated>2025-04-19T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2025/1-autoDL</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/1-autoDL/"><![CDATA[<h1 id="autodl最佳实践">AutoDL最佳实践</h1> <p>因为课题需要，我展开了对AutoDL和<a href="https://gpushare.com/">恒源云</a>平台的试用，恒源云请一定要<a href="https://gpushare.com/center/account/student">学生认证</a>一下</p> <p><a href="https://www.autodl.com/docs">AutoDL文档</a></p> <h2 id="开始">开始</h2> <h2 id="克隆实例">克隆实例</h2> <p>在使用时发现，你租用的实例只有在<strong>同一台服务器</strong>（一般有8-10个GPU）有空闲的时候，你才能开机。</p> <p><strong>是刚好！在！同一个服务器的！可怜的8-10张显卡！有！空！闲！</strong></p> <p>完全不是人，伟大的AutoDL降临了伟大的<strong>克隆实例</strong>功能，可以完全克隆，克隆实例可以把系统和数据盘的东西克隆到同区</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250420155046472.png" alt="image-20250420155046472" style="zoom:75%;"/></p> <p>[^伟大，无需多言，但是一天只有三次，别带滔博节奏]:</p> <h2 id="跨实例复制">跨实例复制</h2> <p>有人就要问了，主播主播，克隆实例虽然好用，但是就一天三次机会，万一克隆完还是被占了，还是太吃操作了。</p> <p>在实际使用中，你的一堆实例真是不知道哪个能用，六冠王<strong>跨实例复制</strong>来了！</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250420155813515.png" alt="image-20250420155813515"/></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
+</code></pre></div></div> <p>启动docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> systemctl start docker
+</code></pre></div></div> <p>因为正常执行build大概率会因为网络问题翻车</p> <p>所以先安装</p> <p>[ERROR <a href="https://github.com/ifzhang/ByteTrack/issues/189">internal] load metadata for nvcr.io/nvidia/tensorrt:21.09-py3 · Issue #189 · ifzhang/ByteTrack (github.com)</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull nvcr.io/nvidia/pytorch:21.09-py3 -–registry-mirror<span class="o">=</span>https://mirror.iscas.ac.cn<span class="o">(</span>国内镜像源地址<span class="o">)</span>
+</code></pre></div></div> <p>启动docker</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torchrun --standalone --nnodes 1 --nproc-per-node 1 vla-scripts/finetune.py \
+  --vla_path openvla/openvla-7b \
+  --data_root_dir /root/autodl-tmp/openvla/dataset/ \
+  --dataset_name libero_goal_no_noops \
+  --run_root_dir /root/autodl-tmp/openvla/log/ \
+  --use_l1_regression True \
+  --use_diffusion False \
+  --use_film False \
+  --num_images_in_input 2 \
+  --use_proprio True \
+  --batch_size 8 \
+  --learning_rate 5e-4 \
+  --num_steps_before_decay 100000 \
+  --max_steps 150005 \
+  --save_freq 10000 \
+  --save_latest_checkpoint_only False \
+  --image_aug True \
+  --lora_rank 32 \
+  --wandb_entity "UCAS" \
+  --wandb_project "VLN"
+  
+  
+usage: finetune.py [-h] [--config_path str] [--vla_path str]
+                   [--data_root_dir str] [--dataset_name str]
+                   [--run_root_dir str] [--adapter_tmp_dir str]
+                   [--batch_size str] [--max_steps str] [--save_steps str]
+                   [--learning_rate str] [--grad_accumulation_steps str]
+                   [--image_aug str] [--shuffle_buffer_size str]
+                   [--save_latest_checkpoint_only str] [--use_lora str]
+                   [--lora_rank str] [--lora_dropout str]
+                   [--use_quantization str] [--wandb_project str]
+                   [--wandb_entity str] [--run_id_note str]
+
+  
+torchrun --standalone --nnodes 1 --nproc-per-node 1 vla-scripts/finetune.py \
+  --vla_path /root/autodl-tmp/openvla/openvla-7b \
+  --data_root_dir /root/autodl-tmp/openvla/dataset/modified_libero_rlds/ \
+  --dataset_name libero_object_no_noops \
+  --run_root_dir /root/autodl-tmp/openvla/log/ \
+  --adapter_tmp_dir /root/autodl-tmp/openvla/log/ \
+  --lora_rank 32 \
+  --batch_size 2 \
+  --grad_accumulation_steps 1 \
+  --learning_rate 2.5e-4 \
+  --image_aug True \
+  --wandb_project "UCAS" \
+  --wandb_entity "UCAS" \
+  --save_steps 5000 \
+  --max_steps 30000 \
+  --save_latest_checkpoint_only true; /usr/bin/shutdown 
+  
+  torchrun --standalone --nnodes 1 --nproc-per-node 1 vla-scripts/finetune.py \
+  --vla_path ./weight/openvla-7b \
+  --data_root_dir ../modified_libero_rlds/ \
+  --dataset_name libero_goal_no_noops \
+  --run_root_dir ./log \
+  --use_l1_regression True \
+  --use_diffusion False \
+  --use_film False \
+  --num_images_in_input 2 \
+  --use_proprio True \
+  --batch_size 4 \
+  --learning_rate 5e-4 \
+  --num_steps_before_decay 100000 \
+  --max_steps 150005 \
+  --save_freq 10000 \
+  --save_latest_checkpoint_only True \
+  --image_aug True \
+  --lora_rank 32
+
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[AutoDL最佳实践]]></summary></entry><entry><title type="html">服务器使用——Tmux 保活进程</title><link href="https://son4ta.github.io/blog/2025/how-to-write-a-blog/" rel="alternate" type="text/html" title="服务器使用——Tmux 保活进程"/><published>2025-01-12T17:56:13+00:00</published><updated>2025-01-12T17:56:13+00:00</updated><id>https://son4ta.github.io/blog/2025/how-to-write-a-blog</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/how-to-write-a-blog/"><![CDATA[<p>我叼，我练了一半你跟我说进程挂了，忍不了</p> <h2 id="tmux">Tmux?</h2> <p>命令行的典型使用方式是，打开一个终端窗口（terminal window，以下简称”窗口”），在里面输入命令。用户与计算机的这种临时的交互，称为一次”会话”（session） 。</p> <p>会话的一个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完。</p> <p>一个典型的例子就是，SSH 登录远程计算机，打开一个远程窗口执行命令。这时，网络突然断线，再次登录的时候，是找不回上一次执行的命令的。因为上一次 SSH 会话已经终止了，里面的进程也随之消失了。</p> <p>为了解决这个问题，会话与窗口可以”解绑”：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话”绑定”其他窗口。 Tmux 就是会话与窗口的”解绑”工具，将它们彻底分离。</p> <p>（1）它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。</p> <p>（2） 它可以让新窗口”接入”已经存在的会话。</p> <p>（3）它允许每个会话有多个连接窗口，因此可以多人实时共享会话。</p> <p>（4）它还支持窗口任意的垂直和水平拆分。</p> <h2 id="使用">使用</h2> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 新建会话</span>
 tmux new <span class="nt">-s</span> &lt;session-name&gt;
 <span class="c"># 接入会话</span>
 tmux attach <span class="nt">-t</span> 0 <span class="c"># 编号</span>
