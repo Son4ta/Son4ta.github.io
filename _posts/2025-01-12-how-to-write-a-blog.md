@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 服务器使用——Tmux 保活进程
-date: 2025-1-12 17:56:13
+date: 2025-01-12 17:56:13
 description: ssh连接偶遇网络问题，丢包之高恐怖如斯，拼尽全力仍无法重连训练中断
 tags: Remote Desktop Ubuntu Server
 categories: Experience
