@@ -63,4 +63,13 @@ profiles:
       中国科学院大学</p>
       <p>浙江, 杭州</p>
       <p>tang_zhi_jiang@163.com</p>
+  - align: right
+    image: ty.jpg
+    content: friend/about_ty.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>陶冶<br>
+      华中科技大学</p>
+      <p>湖北, 武汉</p>
+      <p>568853530@qq.com</p>
 ---
