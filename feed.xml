@@ -1,4 +1,739 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2025-04-25T09:12:06+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">AutoDL最佳实践</title><link href="https://son4ta.github.io/blog/2025/1-autoDL/" rel="alternate" type="text/html" title="AutoDL最佳实践"/><published>2025-04-19T14:32:13+00:00</published><updated>2025-04-19T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2025/1-autoDL</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/1-autoDL/"><![CDATA[<h1 id="autodl最佳实践">AutoDL最佳实践</h1> <p>因为课题需要，我展开了对AutoDL和<a href="https://gpushare.com/">恒源云</a>平台的试用，恒源云请一定要<a href="https://gpushare.com/center/account/student">学生认证</a>一下</p> <p><a href="https://www.autodl.com/docs">AutoDL文档</a></p> <h2 id="开始">开始</h2> <h2 id="克隆实例">克隆实例</h2> <p>在使用时发现，你租用的实例只有在<strong>同一台服务器</strong>（一般有8-10个GPU）有空闲的时候，你才能开机。</p> <p><strong>是刚好！在！同一个服务器的！可怜的8-10张显卡！有！空！闲！</strong></p> <p>完全不是人，伟大的AutoDL降临了伟大的<strong>克隆实例</strong>功能，可以完全克隆，克隆实例可以把系统和数据盘的东西克隆到同区</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250420155046472.png" alt="image-20250420155046472" style="zoom:75%;"/></p> <p>[^伟大，无需多言，但是一天只有三次，别带滔博节奏]:</p> <h2 id="跨实例复制">跨实例复制</h2> <p>有人就要问了，主播主播，克隆实例虽然好用，但是就一天三次机会，万一克隆完还是被占了，还是太吃操作了。</p> <p>在实际使用中，你的一堆实例真是不知道哪个能用，六冠王<strong>跨实例复制</strong>来了！</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250420155813515.png" alt="image-20250420155813515"/></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://son4ta.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://son4ta.github.io/" rel="alternate" type="text/html" hreflang="cn"/><updated>2025-06-22T09:47:14+00:00</updated><id>https://son4ta.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Ai2THOR-ProcTHOR</title><link href="https://son4ta.github.io/blog/2025/RoboTHOR/" rel="alternate" type="text/html" title="Ai2THOR-ProcTHOR"/><published>2025-05-30T14:32:13+00:00</published><updated>2025-05-30T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2025/RoboTHOR</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/RoboTHOR/"><![CDATA[<h1 id="ai2thor-procthor">Ai2THOR-ProcTHOR</h1> <p>ProcTHOR 使用程序生成对大规模多样化、逼真、交互式、可定制和高性能的 3D 环境进行采样，以训练模拟的体现代理。以下是对虚拟家庭环境进行采样的示例。</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\0-acff405a245e23a2a6259dc276288715.svg" alt="img"/></p> <p><a href="https://procthor.allenai.org/">ProcTHOR 的 (allenai.org)</a></p> <h2 id="环境配置">环境配置</h2> <h3 id="一安装">一、安装</h3> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>ai2thor
+<span class="c"># or</span>
+conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge ai2thor
+</code></pre></div></div> <h3 id="二habitat-sim-023----habitat-lab">二、Habitat-sim-0.2.3 &amp; Habitat-lab</h3> <p>请注意，这里的Python一定要是<code class="language-plaintext highlighter-rouge">==3.8</code></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>habitat-sim<span class="o">==</span>0.2.3 <span class="nt">-c</span> conda-forge <span class="nt">-c</span> aihabitat
+pip <span class="nb">install</span> <span class="nt">-e</span> third_party/habitat-lab
+</code></pre></div></div> <h3 id="三安装第三方包">三、安装第三方包</h3> <h4 id="1-lightglue-githubcomcvglightgluegit">1. <strong>LightGlue</strong> (<code class="language-plaintext highlighter-rouge">github.com/cvg/LightGlue.git</code>)</h4> <p>功能：一种基于深度学习的局部特征匹配算法，专为稀疏特征匹配设计。它通过自适应计算机制动态调整推理深度和特征点数量，显著提升了匹配效率和精度</p> <ul> <li>支持自省机制，可提前终止简单图像对的推理过程</li> <li>在3D重建、SLAM等对实时性要求高的场景中表现优异</li> </ul> <h4 id="2-detectron2-githubcomfacebookresearchdetectron2git">2. <strong>Detectron2</strong> (<code class="language-plaintext highlighter-rouge">github.com/facebookresearch/detectron2.git</code>)</h4> <p>功能：Meta开源的计算机视觉工具库，支持目标检测、实例分割、关键点检测等任务</p> <ul> <li>提供预训练模型如Faster R-CNN、Mask R-CNN等</li> <li>支持灵活的配置系统和分布式训练</li> </ul> <h4 id="3-grounded-segment-anything-idea-researchgrounded-segment-anything">3. <strong>Grounded-Segment-Anything</strong> (<code class="language-plaintext highlighter-rouge">IDEA-Research/Grounded-Segment-Anything</code>)</h4> <p>核心组件:</p> <ul> <li> <p><strong>Segment Anything (SAM)</strong></p> <p>功能：Meta提出的通用图像分割模型，支持零样本分割（无需预训练即可分割任意物体）</p> <p>模型文件：<code class="language-plaintext highlighter-rouge">sam_vit_h_4b8939.pth</code></p> <p>是其预训练权重，适用于高精度分割任务</p> </li> <li> <p><strong>GroundingDINO</strong></p> <p>功能：基于文本提示的零样本目标检测模型，可将自然语言描述与图像中的物体关联</p> <ul> <li><strong>模型文件</strong>：<code class="language-plaintext highlighter-rouge">groundingdino_swint_ogc.pth</code>是其预训练权重，支持如“检测戴帽子的人”等复杂语义查询</li> </ul> </li> </ul> <h4 id="4-依赖项与模型文件">4. <strong>依赖项与模型文件</strong></h4> <p><code class="language-plaintext highlighter-rouge">segment_anything</code>：SAM的PyTorch实现，提供图像分割基础功能</p> <p><code class="language-plaintext highlighter-rouge">GroundingDINO依赖</code>：包含文本-图像特征融合模块，支持多模态目标检测</p> <p>模型文件用途：</p> <ul> <li><code class="language-plaintext highlighter-rouge">sam_vit_h_4b8939.pth</code>：SAM的ViT-Huge模型权重，适合高精度分割。</li> <li><code class="language-plaintext highlighter-rouge">groundingdino_swint_ogc.pth</code>：GroundingDINO的Swin Transformer权重，支持文本引导检测。</li> </ul> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>git+https://github.com/cvg/LightGlue.git
+pip <span class="nb">install </span>git+https://github.com/facebookresearch/detectron2.git <span class="c"># 请保证有足够的运行内存编译</span>
+git clone https://github.com/IDEA-Research/Grounded-Segment-Anything.git third_party/Grounded-Segment-Anything
+<span class="nb">cd </span>third_party/Grounded-Segment-Anything
+git checkout 5cb813f <span class="c"># 会得到一个警告：分离头指针状态，不用理会</span>
+pip <span class="nb">install</span> <span class="nt">-e</span> segment_anything
+pip <span class="nb">install</span> <span class="nt">--no-build-isolation</span> <span class="nt">-e</span> GroundingDINO
+<span class="nb">cd</span> ../../
+<span class="nb">mkdir</span> <span class="nt">-p</span> data/models/  <span class="c"># -p 参数自动创建多级目录，这里原作者没搞，wget -O 参数指定的是完整文件路径，不会自动创建目录</span>
+wget <span class="nt">-O</span> data/models/sam_vit_h_4b8939.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+<span class="c"># data/models/sam_vit_h_4b 100%[=================================&gt;]   2.39G  13.5MB/s    in 3m 9s</span>
+
+<span class="c"># source /etc/network_turbo 这里需要VPN ↓</span>
+wget <span class="nt">-O</span> data/models/groundingdino_swint_ogc.pth https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+<span class="c"># data/models/groundingdin 100%[=================================&gt;] 661.85M   121MB/s    in 5.5s</span>
+</code></pre></div></div> <h3 id="四安装别的小东西">四、安装别的小东西</h3> <p><code class="language-plaintext highlighter-rouge">pytorch::faiss-gpu</code> 是 Meta AI 开发的 <strong>GPU 加速版 Faiss 库</strong>，专为大规模向量相似性搜索和聚类设计，可能和图搜索有关系</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>pytorch::faiss-gpu
+pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+</code></pre></div></div> <p>至此，环境配置完成。</p> <h2 id="数据集hm3d">数据集（HM3D）</h2> <h3 id="数据集下载">数据集下载</h3> <p>为了数据集组织正确，先创建文件夹：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p data/datasets/instance_imagenav/hm3d/v3/
+mkdir -p data/scene_datasets/hm3d_v0.2/val/
+</code></pre></div></div> <p>然后，下载两个压缩包：</p> <p>https://dl.fbaipublicfiles.com/habitat/data/datasets/imagenav/hm3d/v3/instance_imagenav_hm3d_v3.zip</p> <p>https://mp-app-prod.s3.amazonaws.com/habitat/v1.0/hm3d-val-habitat-v0.2.tar</p> <p>最后，对于<code class="language-plaintext highlighter-rouge">instance_imagenav_hm3d_v3.zip</code>，把<code class="language-plaintext highlighter-rouge">val</code>、<code class="language-plaintext highlighter-rouge">train</code>和<code class="language-plaintext highlighter-rouge">val_mini</code>复制到<code class="language-plaintext highlighter-rouge">data/datasets/instance_imagenav/hm3d/v3/</code>下面</p> <p>对于<code class="language-plaintext highlighter-rouge">hm3d-val-habitat-v0.2.tar</code>，一样操作</p> <p>注意，需要这么组织数据集，名字也要一模一样：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UniGoal/
+└── data/
+    ├── datasets/
+    │   └── instance_imagenav/
+    │       └── hm3d/
+    │           └── v3/
+    │               └── val/
+    │                   ├── content/
+    │                   │   ├── 4ok3usBNeis.json.gz
+    │                   │   ├── 5cdEh9F2hJL.json.gz
+    │                   │   ├── ...
+    │                   │   └── zt1RVoi7PcG.json.gz
+    │                   └── val.json.gz
+    └── scene_datasets/
+        └── hm3d_v0.2/
+            └── val/
+                ├── 00800-TEEsavR23oF/
+                │   ├── TEEsavR23oF.basis.glb
+                │   └── TEEsavR23oF.basis.navmesh
+                ├── 00801-HaxA7YrQdEC/
+                ├── ...
+                └── 00899-58NLZxWBSpk/
+</code></pre></div></div> <h2 id="llm-and-vlm"><strong>LLM and VLM</strong></h2> <p>Option 1: Install Ollama.【我们这里使用这个选项】</p> <p><a href="https://ollama.readthedocs.io/linux/#ollama">Linux 文档 - Ollama 中文文档</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># source /etc/network_turbo</span>
+curl <span class="nt">-fsSL</span> https://ollama.com/install.sh | sh
+
+<span class="c"># 如果你没有GPU的情况下，ollama会自行关闭，需要重新启动</span>
+ollama serve &amp;
+
+ollama pull llama3.2-vision
+<span class="c"># ollama支持中断继续下载，放心Kill</span>
+<span class="nb">export </span><span class="nv">HF_ENDPOINT</span><span class="o">=</span>https://hf-mirror.com
+</code></pre></div></div> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250425170952781.png" alt="image-20250425170952781"/></p> <p>Option 2: Use LLM and VLM via your own API. Change the <code class="language-plaintext highlighter-rouge">llm_model</code>, <code class="language-plaintext highlighter-rouge">vlm_model</code>, <code class="language-plaintext highlighter-rouge">api_key</code>, <code class="language-plaintext highlighter-rouge">base_url</code> in the configuration file <code class="language-plaintext highlighter-rouge">configs/config_habitat.yaml</code> to your own.</p> <h2 id="evaluation">Evaluation</h2> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama serve &amp; <span class="c"># 如果没启动</span>
+<span class="nb">nohup </span>ollama serve &amp; <span class="c"># 这会启动Ollama后台服务。保持此终端运行或使用nohup将其置于后台</span>
+netstat <span class="nt">-tuln</span> | <span class="nb">grep </span>11434 <span class="c"># 运行以下命令查看11434端口是否被监听</span>
+
+<span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span>0 python main.py  <span class="c"># instance-image-goal</span>
+</code></pre></div></div> <h2 id="debug">DeBug</h2> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libEGL.so.1: cannot open shared object file: No such file or directory</code></p> <p>觉得眼熟？ImportError正在全世界发生！</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    import habitat_sim
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/habitat_sim-0.2.3-py3.8-linux-x86_64.egg/habitat_sim/__init__.py"</span>, line 13, <span class="k">in</span> &lt;module&gt;
+    import habitat_sim._ext.habitat_sim_bindings
+ImportError: libEGL.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libegl1 mesa-utils libgl1-mesa-glx
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ModuleNotFoundError: No module named 'openai'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 15, <span class="k">in</span> &lt;module&gt;
+    from src.graph.graph import Graph
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 9, <span class="k">in</span> &lt;module&gt;
+    from openai import OpenAI
+ModuleNotFoundError: No module named <span class="s1">'openai'</span>
+</code></pre></div></div> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>openai
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 15, <span class="k">in</span> &lt;module&gt;
+    from src.graph.graph import Graph
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 28, <span class="k">in</span> &lt;module&gt;
+    from .utils.utils import filter_objects, gobs_to_detection_list
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/utils.py"</span>, line 7, <span class="k">in</span> &lt;module&gt;
+    import faiss
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/__init__.py"</span>, line 16, <span class="k">in</span> &lt;module&gt;
+    from .loader import <span class="k">*</span>
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/loader.py"</span>, line 65, <span class="k">in</span> &lt;module&gt;
+    from .swigfaiss import <span class="k">*</span>
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/swigfaiss.py"</span>, line 13, <span class="k">in</span> &lt;module&gt;
+    from <span class="nb">.</span> import _swigfaiss
+ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span><span class="nv">mkl</span><span class="o">=</span>2021 
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num timesteps 0, episode_idx 0
+update_observation 6...
+    mapping3d...
+        compute_spatial_similarities...
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 151, <span class="k">in </span>main
+    graph.update_scenegraph<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 716, <span class="k">in </span>update_scenegraph
+    self.mapping3d<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 524, <span class="k">in </span>mapping3d
+    spatial_sim <span class="o">=</span> compute_spatial_similarities<span class="o">(</span>self.cfg, fg_detection_list, self.objects<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/mapping.py"</span>, line 21, <span class="k">in </span>compute_spatial_similarities
+    spatial_sim <span class="o">=</span> compute_overlap_matrix_2set<span class="o">(</span>cfg, objects, detection_list<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/utils.py"</span>, line 331, <span class="k">in </span>compute_overlap_matrix_2set
+    iou <span class="o">=</span> compute_3d_iou_accuracte_batch<span class="o">(</span>bbox_map, bbox_new<span class="o">)</span> <span class="c"># (m, n)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/iou.py"</span>, line 58, <span class="k">in </span>compute_3d_iou_accuracte_batch
+    import pytorch3d.ops as ops
+ModuleNotFoundError: No module named <span class="s1">'pytorch3d'</span>
+
+</code></pre></div></div> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="s2">"git+https://github.com/facebookresearch/pytorch3d.git"</span> <span class="nt">-v</span> <span class="p">;</span> /usr/bin/shutdown  
+<span class="c"># 一定要从从源码安装，不然很逆天</span>
+<span class="c"># 会一堆警告，不用管，没停就是正常</span>
+<span class="c"># 要在有GPU的环境下（如果你是租用平台，就得开着GPU）</span>
+<span class="c"># 20分钟左右（实测23:44到00:07）</span>
+</code></pre></div></div> <p>报错：graph.py 的<code class="language-plaintext highlighter-rouge">878</code>和<code class="language-plaintext highlighter-rouge">903</code>行 <code class="language-plaintext highlighter-rouge">AttributeError: 'numpy.ndarray' object has no attribute 'cpu'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 166, <span class="k">in </span>main
+    goal <span class="o">=</span> graph.explore<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 732, <span class="k">in </span>explore
+    goal <span class="o">=</span> self.get_goal<span class="o">(</span>goal<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 903, <span class="k">in </span>get_goal
+    frontier_locations <span class="o">=</span> frontier_locations.cpu<span class="o">()</span>.numpy<span class="o">()</span>
+AttributeError: <span class="s1">'numpy.ndarray'</span> object has no attribute <span class="s1">'cpu'</span>
+</code></pre></div></div> <p>修改<code class="language-plaintext highlighter-rouge">/root/autodl-tmp/UniGoal/src/graph/graph.py</code>的<code class="language-plaintext highlighter-rouge">878</code>和<code class="language-plaintext highlighter-rouge">903</code>行：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># frontier_locations = frontier_locations.cpu().numpy()
+</span><span class="n">frontier_locations</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">tensor</span><span class="p">(</span><span class="n">frontier_locations</span><span class="p">).</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span>
+</code></pre></div></div> <p>报错：graph.py <code class="language-plaintext highlighter-rouge">get_goal(goal)</code> <code class="language-plaintext highlighter-rouge">917</code> 行<code class="language-plaintext highlighter-rouge">AttributeError: 'numpy.ndarray' object has no attribute 'cpu'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    goal <span class="o">=</span> graph.explore<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 732, <span class="k">in </span>explore
+    goal <span class="o">=</span> self.get_goal<span class="o">(</span>goal<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 917, <span class="k">in </span>get_goal
+    scores +<span class="o">=</span> distances_16_inverse
+ValueError: operands could not be broadcast together with shapes <span class="o">(</span>1016,<span class="o">)</span> <span class="o">(</span>934,<span class="o">)</span> <span class="o">(</span>1016,<span class="o">)</span>
+</code></pre></div></div> <p>全面修改<code class="language-plaintext highlighter-rouge">get_goal(goal)</code> 函数：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_goal</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">fbe_map</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">zeros_like</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fbe_map</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">fbe_free_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first free 
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fbe_map</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first free 
+</span>            <span class="n">fbe_map</span><span class="p">[</span><span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">binary_dilation</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">].</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">(),</span> <span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">disk</span><span class="p">(</span><span class="mi">4</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># dilate obstacle
+</span>
+            <span class="n">fbe_cp</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">fbe_map</span><span class="p">)</span>
+            <span class="n">fbe_cpp</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">fbe_map</span><span class="p">)</span>
+            <span class="n">fbe_cp</span><span class="p">[</span><span class="n">fbe_cp</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># unknown space
+</span>            <span class="n">fbe_cp</span><span class="p">[</span><span class="n">fbe_cp</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># free and obstacle
+</span>            <span class="n">selem</span> <span class="o">=</span> <span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">fbe_cpp</span><span class="p">[</span><span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">binary_dilation</span><span class="p">(</span><span class="n">fbe_cp</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">(),</span> <span class="n">selem</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># dilate unknown space
+</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">fbe_map</span> <span class="o">-</span> <span class="n">fbe_cpp</span>  <span class="c1"># frontier area
+</span>            <span class="n">frontier_map</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">frontier_map</span> <span class="o">=</span> <span class="n">frontier_map</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">num_of_goal</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">).</span><span class="nf">to</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">frontier_locations</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">stack</span><span class="p">([</span><span class="n">torch</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">)[</span><span class="mi">1</span><span class="p">]]).</span><span class="n">T</span>
+            <span class="n">num_frontiers</span> <span class="o">=</span> <span class="n">frontier_locations</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">num_frontiers</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># 统一使用初始前沿位置计算 --------------------------------------------------
+</span>            <span class="n">input_pose</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+            <span class="n">input_pose</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_pose</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">map_size_cm</span><span class="o">/</span><span class="mi">100</span> <span class="o">-</span> <span class="n">input_pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">input_pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">traversible</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_traversible</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_pose</span><span class="p">)</span>
+
+            <span class="c1"># 初始距离计算
+</span>            <span class="n">planner</span> <span class="o">=</span> <span class="nc">FMMPlanner</span><span class="p">(</span><span class="n">traversible</span><span class="p">)</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">planner</span><span class="p">.</span><span class="nf">set_goal</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">fmm_dist</span> <span class="o">=</span> <span class="n">planner</span><span class="p">.</span><span class="n">fmm_dist</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># 统一将前沿位置转换为numpy并计算初始距离
+</span>            <span class="n">frontier_locations_np</span> <span class="o">=</span> <span class="n">frontier_locations</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># 加1补偿坐标偏移
+</span>            <span class="n">distances</span> <span class="o">=</span> <span class="n">fmm_dist</span><span class="p">[</span><span class="n">frontier_locations_np</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">frontier_locations_np</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">/</span> <span class="mi">20</span>
+
+            <span class="c1"># 初始前沿筛选
+</span>            <span class="n">distance_threshold</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">valid_mask</span> <span class="o">=</span> <span class="n">distances</span> <span class="o">&gt;=</span> <span class="n">distance_threshold</span>
+            <span class="n">valid_distances</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">valid_mask</span><span class="p">]</span>
+            <span class="n">valid_locations</span> <span class="o">=</span> <span class="n">frontier_locations_np</span><span class="p">[</span><span class="n">valid_mask</span><span class="p">]</span>  <span class="c1"># 保存有效前沿位置
+</span>
+            <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">valid_distances</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># 初始化scores
+</span>            <span class="n">scores</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">clip</span><span class="p">(</span><span class="n">valid_distances</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">distance_threshold</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance_threshold</span><span class="p">)</span>
+
+            <span class="c1"># 处理传入的goal时使用同一组前沿位置 ----------------------------------------
+</span>            <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">ndarray</span><span class="p">)):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># 使用已筛选的有效前沿计算新距离
+</span>                    <span class="n">planner_goal</span> <span class="o">=</span> <span class="nc">FMMPlanner</span><span class="p">(</span><span class="n">traversible</span><span class="p">)</span>
+                    <span class="n">state_goal</span> <span class="o">=</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nf">int</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">planner_goal</span><span class="p">.</span><span class="nf">set_goal</span><span class="p">(</span><span class="n">state_goal</span><span class="p">)</span>
+                    <span class="n">fmm_dist_goal</span> <span class="o">=</span> <span class="n">planner_goal</span><span class="p">.</span><span class="n">fmm_dist</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="c1"># 直接使用valid_locations计算距离
+</span>                    <span class="n">goal_distances</span> <span class="o">=</span> <span class="n">fmm_dist_goal</span><span class="p">[</span><span class="n">valid_locations</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">valid_locations</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">/</span> <span class="mi">20</span>
+                    <span class="n">goal_scores</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">clip</span><span class="p">(</span><span class="n">goal_distances</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">distance_threshold</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance_threshold</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span>
+                    <span class="n">scores</span> <span class="o">+=</span> <span class="n">goal_scores</span>  <span class="c1"># 保证形状一致
+</span>
+                    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Goal processing error: </span><span class="si">{</span><span class="nf">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+                        <span class="c1"># 最终目标选择
+</span>                        <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="bp">None</span>
+                        <span class="n">best_idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+                        <span class="n">final_goal</span> <span class="o">=</span> <span class="n">valid_locations</span><span class="p">[</span><span class="n">best_idx</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 补偿坐标偏移
+</span>                        <span class="k">return</span> <span class="n">final_goal</span>
+</code></pre></div></div> <p>KeyError: 6</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank:0, episode:8, cat_id:0, cat_name:chair
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 205, <span class="k">in </span>main
+    obs, _, <span class="k">done</span>, infos, observations_habitat <span class="o">=</span> agent.step<span class="o">(</span>agent_input<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/agent/unigoal/agent.py"</span>, line 404, <span class="k">in </span>step
+    self.reset<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/agent/unigoal/agent.py"</span>, line 89, <span class="k">in </span>reset
+    self.envs.set_goal_cat_id<span class="o">(</span>idx<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/envs/habitat/instanceimagegoal_env.py"</span>, line 264, <span class="k">in </span>set_goal_cat_id
+    self.info[<span class="s1">'goal_name'</span><span class="o">]</span> <span class="o">=</span> self.index2name[idx]
+KeyError: 6
+</code></pre></div></div> <p>在agent.py 692行修改：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="nf">if </span><span class="p">((</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> \
+                    <span class="o">+</span><span class="p">((</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> \
+                        <span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># return int(ins_whwh[0][0])
+</span>                <span class="n">cat_id</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="c1"># 添加有效性检查
+</span>                <span class="k">if</span> <span class="n">cat_id</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">envs</span><span class="p">.</span><span class="n">index2name</span><span class="p">:</span>
+                	<span class="k">return</span> <span class="n">cat_id</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="bp">...</span>
+</code></pre></div></div> <p>加入轮次选择 main.py</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ai2THOR-ProcTHOR]]></summary></entry><entry><title type="html">RoboTHOR</title><link href="https://son4ta.github.io/blog/2025/UniGoal/" rel="alternate" type="text/html" title="RoboTHOR"/><published>2025-05-30T14:32:13+00:00</published><updated>2025-05-30T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2025/UniGoal</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/UniGoal/"><![CDATA[<h1 id="robothor">RoboTHOR</h1> <p>在机器人导航领域，现有方法通常针对特定任务（如物体导航、图像导航或文本导航）设计独立框架，导致模型泛化能力受限且难以应对真实场景中复杂的多模态指令。为此，本研究提出UniGoal ——首个零样本学习的通用目标导航框架，通过统一的图表示与大语言模型（LLM）推理 ，实现了跨物体类别、图像和文本描述三类任务的零样本导航。其核心创新在于：（1）构建动态场景图与目标图的统一表示，将环境感知与目标描述转化为结构化图，保留丰富的空间与语义关系；（2）设计<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=多阶段探索策略&amp;zhida_source=entity">多阶段探索策略</a>，根据图匹配程度动态调整探索策略，在零匹配阶段通过子图分解逐步探索未知区域，部分匹配时利用坐标投影与锚点对齐推断目标位置，完全匹配时通过场景图修正与验证确保定位准确。此外，引入<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=黑名单机制&amp;zhida_source=entity">黑名单机制</a>避免重复探索失败区域，显著提升效率。</p> <p>UniGoal的推理流程以图匹配为核心，结合LLM的推理能力实现高效决策。在场景图构建中，实时融合RGB-D观测中的语义信息，形成拓扑结构。目标图则根据输入类型（物体类别、图像或文本）通过LLM/VLM处理生成，确保与场景图表示的一致性。实验表明，UniGoal在<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=MatterPort3D&amp;zhida_source=entity">MatterPort3D</a>、<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=HM3D&amp;zhida_source=entity">HM3D</a>等数据集上全面超越现有零样本的专用任务方法（如<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=Mod-IIN&amp;zhida_source=entity">Mod-IIN</a>[1]、SG-Nav[2]）及需训练的通用方法（如<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=GOAT&amp;zhida_source=entity">GOAT</a>[3]），在物体导航（成功率41.0%）、图像实例导航（成功率60.2%）和文本导航（成功率20.2%）任务中均达最优性能。其无需训练的特性与多模态通用性，为机器人在未知环境中的灵活导航提供了全新范式，拥有在真实场景落地的潜力。</p> <table> <tbody> <tr> <td>——[CVPR2025</td> <td>UniGoal：通用零样本目标导航，Navigate to Any Goal! - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/30973430092)</td> </tr> </tbody> </table> <h2 id="环境配置">环境配置</h2> <h3 id="一conda">一、Conda</h3> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/bagh2178/UniGoal.git
+<span class="nb">cd </span>UniGoal
+conda create <span class="nt">-n</span> unigoal <span class="nv">python</span><span class="o">==</span>3.8
+conda activate unigoal
+
+<span class="c"># AutoDL的学术加速</span>
+<span class="nb">source</span> /etc/network_turbo
+<span class="nb">unset </span>http_proxy <span class="o">&amp;&amp;</span> <span class="nb">unset </span>https_proxy
+</code></pre></div></div> <h3 id="二habitat-sim-023----habitat-lab">二、Habitat-sim-0.2.3 &amp; Habitat-lab</h3> <p>请注意，这里的Python一定要是<code class="language-plaintext highlighter-rouge">==3.8</code></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>habitat-sim<span class="o">==</span>0.2.3 <span class="nt">-c</span> conda-forge <span class="nt">-c</span> aihabitat
+pip <span class="nb">install</span> <span class="nt">-e</span> third_party/habitat-lab
+</code></pre></div></div> <h3 id="三安装第三方包">三、安装第三方包</h3> <h4 id="1-lightglue-githubcomcvglightgluegit">1. <strong>LightGlue</strong> (<code class="language-plaintext highlighter-rouge">github.com/cvg/LightGlue.git</code>)</h4> <p>功能：一种基于深度学习的局部特征匹配算法，专为稀疏特征匹配设计。它通过自适应计算机制动态调整推理深度和特征点数量，显著提升了匹配效率和精度</p> <ul> <li>支持自省机制，可提前终止简单图像对的推理过程</li> <li>在3D重建、SLAM等对实时性要求高的场景中表现优异</li> </ul> <h4 id="2-detectron2-githubcomfacebookresearchdetectron2git">2. <strong>Detectron2</strong> (<code class="language-plaintext highlighter-rouge">github.com/facebookresearch/detectron2.git</code>)</h4> <p>功能：Meta开源的计算机视觉工具库，支持目标检测、实例分割、关键点检测等任务</p> <ul> <li>提供预训练模型如Faster R-CNN、Mask R-CNN等</li> <li>支持灵活的配置系统和分布式训练</li> </ul> <h4 id="3-grounded-segment-anything-idea-researchgrounded-segment-anything">3. <strong>Grounded-Segment-Anything</strong> (<code class="language-plaintext highlighter-rouge">IDEA-Research/Grounded-Segment-Anything</code>)</h4> <p>核心组件:</p> <ul> <li> <p><strong>Segment Anything (SAM)</strong></p> <p>功能：Meta提出的通用图像分割模型，支持零样本分割（无需预训练即可分割任意物体）</p> <p>模型文件：<code class="language-plaintext highlighter-rouge">sam_vit_h_4b8939.pth</code></p> <p>是其预训练权重，适用于高精度分割任务</p> </li> <li> <p><strong>GroundingDINO</strong></p> <p>功能：基于文本提示的零样本目标检测模型，可将自然语言描述与图像中的物体关联</p> <ul> <li><strong>模型文件</strong>：<code class="language-plaintext highlighter-rouge">groundingdino_swint_ogc.pth</code>是其预训练权重，支持如“检测戴帽子的人”等复杂语义查询</li> </ul> </li> </ul> <h4 id="4-依赖项与模型文件">4. <strong>依赖项与模型文件</strong></h4> <p><code class="language-plaintext highlighter-rouge">segment_anything</code>：SAM的PyTorch实现，提供图像分割基础功能</p> <p><code class="language-plaintext highlighter-rouge">GroundingDINO依赖</code>：包含文本-图像特征融合模块，支持多模态目标检测</p> <p>模型文件用途：</p> <ul> <li><code class="language-plaintext highlighter-rouge">sam_vit_h_4b8939.pth</code>：SAM的ViT-Huge模型权重，适合高精度分割。</li> <li><code class="language-plaintext highlighter-rouge">groundingdino_swint_ogc.pth</code>：GroundingDINO的Swin Transformer权重，支持文本引导检测。</li> </ul> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>git+https://github.com/cvg/LightGlue.git
+pip <span class="nb">install </span>git+https://github.com/facebookresearch/detectron2.git <span class="c"># 请保证有足够的运行内存编译</span>
+git clone https://github.com/IDEA-Research/Grounded-Segment-Anything.git third_party/Grounded-Segment-Anything
+<span class="nb">cd </span>third_party/Grounded-Segment-Anything
+git checkout 5cb813f <span class="c"># 会得到一个警告：分离头指针状态，不用理会</span>
+pip <span class="nb">install</span> <span class="nt">-e</span> segment_anything
+pip <span class="nb">install</span> <span class="nt">--no-build-isolation</span> <span class="nt">-e</span> GroundingDINO
+<span class="nb">cd</span> ../../
+<span class="nb">mkdir</span> <span class="nt">-p</span> data/models/  <span class="c"># -p 参数自动创建多级目录，这里原作者没搞，wget -O 参数指定的是完整文件路径，不会自动创建目录</span>
+wget <span class="nt">-O</span> data/models/sam_vit_h_4b8939.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+<span class="c"># data/models/sam_vit_h_4b 100%[=================================&gt;]   2.39G  13.5MB/s    in 3m 9s</span>
+
+<span class="c"># source /etc/network_turbo 这里需要VPN ↓</span>
+wget <span class="nt">-O</span> data/models/groundingdino_swint_ogc.pth https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+<span class="c"># data/models/groundingdin 100%[=================================&gt;] 661.85M   121MB/s    in 5.5s</span>
+</code></pre></div></div> <h3 id="四安装别的小东西">四、安装别的小东西</h3> <p><code class="language-plaintext highlighter-rouge">pytorch::faiss-gpu</code> 是 Meta AI 开发的 <strong>GPU 加速版 Faiss 库</strong>，专为大规模向量相似性搜索和聚类设计，可能和图搜索有关系</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>pytorch::faiss-gpu
+pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+</code></pre></div></div> <p>至此，环境配置完成。</p> <h2 id="数据集hm3d">数据集（HM3D）</h2> <h3 id="数据集下载">数据集下载</h3> <p>为了数据集组织正确，先创建文件夹：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p data/datasets/instance_imagenav/hm3d/v3/
+mkdir -p data/scene_datasets/hm3d_v0.2/val/
+</code></pre></div></div> <p>然后，下载两个压缩包：</p> <p>https://dl.fbaipublicfiles.com/habitat/data/datasets/imagenav/hm3d/v3/instance_imagenav_hm3d_v3.zip</p> <p>https://mp-app-prod.s3.amazonaws.com/habitat/v1.0/hm3d-val-habitat-v0.2.tar</p> <p>最后，对于<code class="language-plaintext highlighter-rouge">instance_imagenav_hm3d_v3.zip</code>，把<code class="language-plaintext highlighter-rouge">val</code>、<code class="language-plaintext highlighter-rouge">train</code>和<code class="language-plaintext highlighter-rouge">val_mini</code>复制到<code class="language-plaintext highlighter-rouge">data/datasets/instance_imagenav/hm3d/v3/</code>下面</p> <p>对于<code class="language-plaintext highlighter-rouge">hm3d-val-habitat-v0.2.tar</code>，一样操作</p> <p>注意，需要这么组织数据集，名字也要一模一样：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UniGoal/
+└── data/
+    ├── datasets/
+    │   └── instance_imagenav/
+    │       └── hm3d/
+    │           └── v3/
+    │               └── val/
+    │                   ├── content/
+    │                   │   ├── 4ok3usBNeis.json.gz
+    │                   │   ├── 5cdEh9F2hJL.json.gz
+    │                   │   ├── ...
+    │                   │   └── zt1RVoi7PcG.json.gz
+    │                   └── val.json.gz
+    └── scene_datasets/
+        └── hm3d_v0.2/
+            └── val/
+                ├── 00800-TEEsavR23oF/
+                │   ├── TEEsavR23oF.basis.glb
+                │   └── TEEsavR23oF.basis.navmesh
+                ├── 00801-HaxA7YrQdEC/
+                ├── ...
+                └── 00899-58NLZxWBSpk/
+</code></pre></div></div> <h2 id="llm-and-vlm"><strong>LLM and VLM</strong></h2> <p>Option 1: Install Ollama.【我们这里使用这个选项】</p> <p><a href="https://ollama.readthedocs.io/linux/#ollama">Linux 文档 - Ollama 中文文档</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># source /etc/network_turbo</span>
+curl <span class="nt">-fsSL</span> https://ollama.com/install.sh | sh
+
+<span class="c"># 如果你没有GPU的情况下，ollama会自行关闭，需要重新启动</span>
+ollama serve &amp;
+
+ollama pull llama3.2-vision
+<span class="c"># ollama支持中断继续下载，放心Kill</span>
+<span class="nb">export </span><span class="nv">HF_ENDPOINT</span><span class="o">=</span>https://hf-mirror.com
+</code></pre></div></div> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250425170952781.png" alt="image-20250425170952781"/></p> <p>Option 2: Use LLM and VLM via your own API. Change the <code class="language-plaintext highlighter-rouge">llm_model</code>, <code class="language-plaintext highlighter-rouge">vlm_model</code>, <code class="language-plaintext highlighter-rouge">api_key</code>, <code class="language-plaintext highlighter-rouge">base_url</code> in the configuration file <code class="language-plaintext highlighter-rouge">configs/config_habitat.yaml</code> to your own.</p> <h2 id="evaluation">Evaluation</h2> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama serve &amp; <span class="c"># 如果没启动</span>
+<span class="nb">nohup </span>ollama serve &amp; <span class="c"># 这会启动Ollama后台服务。保持此终端运行或使用nohup将其置于后台</span>
+netstat <span class="nt">-tuln</span> | <span class="nb">grep </span>11434 <span class="c"># 运行以下命令查看11434端口是否被监听</span>
+
+<span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span>0 python main.py  <span class="c"># instance-image-goal</span>
+</code></pre></div></div> <h2 id="debug">DeBug</h2> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libEGL.so.1: cannot open shared object file: No such file or directory</code></p> <p>觉得眼熟？ImportError正在全世界发生！</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    import habitat_sim
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/habitat_sim-0.2.3-py3.8-linux-x86_64.egg/habitat_sim/__init__.py"</span>, line 13, <span class="k">in</span> &lt;module&gt;
+    import habitat_sim._ext.habitat_sim_bindings
+ImportError: libEGL.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libegl1 mesa-utils libgl1-mesa-glx
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ModuleNotFoundError: No module named 'openai'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 15, <span class="k">in</span> &lt;module&gt;
+    from src.graph.graph import Graph
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 9, <span class="k">in</span> &lt;module&gt;
+    from openai import OpenAI
+ModuleNotFoundError: No module named <span class="s1">'openai'</span>
+</code></pre></div></div> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>openai
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 15, <span class="k">in</span> &lt;module&gt;
+    from src.graph.graph import Graph
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 28, <span class="k">in</span> &lt;module&gt;
+    from .utils.utils import filter_objects, gobs_to_detection_list
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/utils.py"</span>, line 7, <span class="k">in</span> &lt;module&gt;
+    import faiss
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/__init__.py"</span>, line 16, <span class="k">in</span> &lt;module&gt;
+    from .loader import <span class="k">*</span>
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/loader.py"</span>, line 65, <span class="k">in</span> &lt;module&gt;
+    from .swigfaiss import <span class="k">*</span>
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/swigfaiss.py"</span>, line 13, <span class="k">in</span> &lt;module&gt;
+    from <span class="nb">.</span> import _swigfaiss
+ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span><span class="nv">mkl</span><span class="o">=</span>2021 
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num timesteps 0, episode_idx 0
+update_observation 6...
+    mapping3d...
+        compute_spatial_similarities...
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 151, <span class="k">in </span>main
+    graph.update_scenegraph<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 716, <span class="k">in </span>update_scenegraph
+    self.mapping3d<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 524, <span class="k">in </span>mapping3d
+    spatial_sim <span class="o">=</span> compute_spatial_similarities<span class="o">(</span>self.cfg, fg_detection_list, self.objects<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/mapping.py"</span>, line 21, <span class="k">in </span>compute_spatial_similarities
+    spatial_sim <span class="o">=</span> compute_overlap_matrix_2set<span class="o">(</span>cfg, objects, detection_list<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/utils.py"</span>, line 331, <span class="k">in </span>compute_overlap_matrix_2set
+    iou <span class="o">=</span> compute_3d_iou_accuracte_batch<span class="o">(</span>bbox_map, bbox_new<span class="o">)</span> <span class="c"># (m, n)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/iou.py"</span>, line 58, <span class="k">in </span>compute_3d_iou_accuracte_batch
+    import pytorch3d.ops as ops
+ModuleNotFoundError: No module named <span class="s1">'pytorch3d'</span>
+
+</code></pre></div></div> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="s2">"git+https://github.com/facebookresearch/pytorch3d.git"</span> <span class="nt">-v</span> <span class="p">;</span> /usr/bin/shutdown  
+<span class="c"># 一定要从从源码安装，不然很逆天</span>
+<span class="c"># 会一堆警告，不用管，没停就是正常</span>
+<span class="c"># 要在有GPU的环境下（如果你是租用平台，就得开着GPU）</span>
+<span class="c"># 20分钟左右（实测23:44到00:07）</span>
+</code></pre></div></div> <p>报错：graph.py 的<code class="language-plaintext highlighter-rouge">878</code>和<code class="language-plaintext highlighter-rouge">903</code>行 <code class="language-plaintext highlighter-rouge">AttributeError: 'numpy.ndarray' object has no attribute 'cpu'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 166, <span class="k">in </span>main
+    goal <span class="o">=</span> graph.explore<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 732, <span class="k">in </span>explore
+    goal <span class="o">=</span> self.get_goal<span class="o">(</span>goal<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 903, <span class="k">in </span>get_goal
+    frontier_locations <span class="o">=</span> frontier_locations.cpu<span class="o">()</span>.numpy<span class="o">()</span>
+AttributeError: <span class="s1">'numpy.ndarray'</span> object has no attribute <span class="s1">'cpu'</span>
+</code></pre></div></div> <p>修改<code class="language-plaintext highlighter-rouge">/root/autodl-tmp/UniGoal/src/graph/graph.py</code>的<code class="language-plaintext highlighter-rouge">878</code>和<code class="language-plaintext highlighter-rouge">903</code>行：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># frontier_locations = frontier_locations.cpu().numpy()
+</span><span class="n">frontier_locations</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">tensor</span><span class="p">(</span><span class="n">frontier_locations</span><span class="p">).</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span>
+</code></pre></div></div> <p>报错：graph.py <code class="language-plaintext highlighter-rouge">get_goal(goal)</code> <code class="language-plaintext highlighter-rouge">917</code> 行<code class="language-plaintext highlighter-rouge">AttributeError: 'numpy.ndarray' object has no attribute 'cpu'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    goal <span class="o">=</span> graph.explore<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 732, <span class="k">in </span>explore
+    goal <span class="o">=</span> self.get_goal<span class="o">(</span>goal<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 917, <span class="k">in </span>get_goal
+    scores +<span class="o">=</span> distances_16_inverse
+ValueError: operands could not be broadcast together with shapes <span class="o">(</span>1016,<span class="o">)</span> <span class="o">(</span>934,<span class="o">)</span> <span class="o">(</span>1016,<span class="o">)</span>
+</code></pre></div></div> <p>全面修改<code class="language-plaintext highlighter-rouge">get_goal(goal)</code> 函数：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_goal</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">fbe_map</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">zeros_like</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fbe_map</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">fbe_free_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first free 
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fbe_map</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first free 
+</span>            <span class="n">fbe_map</span><span class="p">[</span><span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">binary_dilation</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">].</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">(),</span> <span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">disk</span><span class="p">(</span><span class="mi">4</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># dilate obstacle
+</span>
+            <span class="n">fbe_cp</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">fbe_map</span><span class="p">)</span>
+            <span class="n">fbe_cpp</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">fbe_map</span><span class="p">)</span>
+            <span class="n">fbe_cp</span><span class="p">[</span><span class="n">fbe_cp</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># unknown space
+</span>            <span class="n">fbe_cp</span><span class="p">[</span><span class="n">fbe_cp</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># free and obstacle
+</span>            <span class="n">selem</span> <span class="o">=</span> <span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">fbe_cpp</span><span class="p">[</span><span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">binary_dilation</span><span class="p">(</span><span class="n">fbe_cp</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">(),</span> <span class="n">selem</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># dilate unknown space
+</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">fbe_map</span> <span class="o">-</span> <span class="n">fbe_cpp</span>  <span class="c1"># frontier area
+</span>            <span class="n">frontier_map</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">frontier_map</span> <span class="o">=</span> <span class="n">frontier_map</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">num_of_goal</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">).</span><span class="nf">to</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">frontier_locations</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">stack</span><span class="p">([</span><span class="n">torch</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">)[</span><span class="mi">1</span><span class="p">]]).</span><span class="n">T</span>
+            <span class="n">num_frontiers</span> <span class="o">=</span> <span class="n">frontier_locations</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">num_frontiers</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># 统一使用初始前沿位置计算 --------------------------------------------------
+</span>            <span class="n">input_pose</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+            <span class="n">input_pose</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_pose</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">map_size_cm</span><span class="o">/</span><span class="mi">100</span> <span class="o">-</span> <span class="n">input_pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">input_pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">traversible</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_traversible</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_pose</span><span class="p">)</span>
+
+            <span class="c1"># 初始距离计算
+</span>            <span class="n">planner</span> <span class="o">=</span> <span class="nc">FMMPlanner</span><span class="p">(</span><span class="n">traversible</span><span class="p">)</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">planner</span><span class="p">.</span><span class="nf">set_goal</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">fmm_dist</span> <span class="o">=</span> <span class="n">planner</span><span class="p">.</span><span class="n">fmm_dist</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># 统一将前沿位置转换为numpy并计算初始距离
+</span>            <span class="n">frontier_locations_np</span> <span class="o">=</span> <span class="n">frontier_locations</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># 加1补偿坐标偏移
+</span>            <span class="n">distances</span> <span class="o">=</span> <span class="n">fmm_dist</span><span class="p">[</span><span class="n">frontier_locations_np</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">frontier_locations_np</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">/</span> <span class="mi">20</span>
+
+            <span class="c1"># 初始前沿筛选
+</span>            <span class="n">distance_threshold</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">valid_mask</span> <span class="o">=</span> <span class="n">distances</span> <span class="o">&gt;=</span> <span class="n">distance_threshold</span>
+            <span class="n">valid_distances</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">valid_mask</span><span class="p">]</span>
+            <span class="n">valid_locations</span> <span class="o">=</span> <span class="n">frontier_locations_np</span><span class="p">[</span><span class="n">valid_mask</span><span class="p">]</span>  <span class="c1"># 保存有效前沿位置
+</span>
+            <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">valid_distances</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># 初始化scores
+</span>            <span class="n">scores</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">clip</span><span class="p">(</span><span class="n">valid_distances</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">distance_threshold</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance_threshold</span><span class="p">)</span>
+
+            <span class="c1"># 处理传入的goal时使用同一组前沿位置 ----------------------------------------
+</span>            <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">ndarray</span><span class="p">)):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># 使用已筛选的有效前沿计算新距离
+</span>                    <span class="n">planner_goal</span> <span class="o">=</span> <span class="nc">FMMPlanner</span><span class="p">(</span><span class="n">traversible</span><span class="p">)</span>
+                    <span class="n">state_goal</span> <span class="o">=</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nf">int</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">planner_goal</span><span class="p">.</span><span class="nf">set_goal</span><span class="p">(</span><span class="n">state_goal</span><span class="p">)</span>
+                    <span class="n">fmm_dist_goal</span> <span class="o">=</span> <span class="n">planner_goal</span><span class="p">.</span><span class="n">fmm_dist</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="c1"># 直接使用valid_locations计算距离
+</span>                    <span class="n">goal_distances</span> <span class="o">=</span> <span class="n">fmm_dist_goal</span><span class="p">[</span><span class="n">valid_locations</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">valid_locations</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">/</span> <span class="mi">20</span>
+                    <span class="n">goal_scores</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">clip</span><span class="p">(</span><span class="n">goal_distances</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">distance_threshold</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance_threshold</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span>
+                    <span class="n">scores</span> <span class="o">+=</span> <span class="n">goal_scores</span>  <span class="c1"># 保证形状一致
+</span>
+                    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Goal processing error: </span><span class="si">{</span><span class="nf">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+                        <span class="c1"># 最终目标选择
+</span>                        <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="bp">None</span>
+                        <span class="n">best_idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+                        <span class="n">final_goal</span> <span class="o">=</span> <span class="n">valid_locations</span><span class="p">[</span><span class="n">best_idx</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 补偿坐标偏移
+</span>                        <span class="k">return</span> <span class="n">final_goal</span>
+</code></pre></div></div> <p>KeyError: 6</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank:0, episode:8, cat_id:0, cat_name:chair
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 205, <span class="k">in </span>main
+    obs, _, <span class="k">done</span>, infos, observations_habitat <span class="o">=</span> agent.step<span class="o">(</span>agent_input<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/agent/unigoal/agent.py"</span>, line 404, <span class="k">in </span>step
+    self.reset<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/agent/unigoal/agent.py"</span>, line 89, <span class="k">in </span>reset
+    self.envs.set_goal_cat_id<span class="o">(</span>idx<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/envs/habitat/instanceimagegoal_env.py"</span>, line 264, <span class="k">in </span>set_goal_cat_id
+    self.info[<span class="s1">'goal_name'</span><span class="o">]</span> <span class="o">=</span> self.index2name[idx]
+KeyError: 6
+</code></pre></div></div> <p>在agent.py 692行修改：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="nf">if </span><span class="p">((</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> \
+                    <span class="o">+</span><span class="p">((</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> \
+                        <span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># return int(ins_whwh[0][0])
+</span>                <span class="n">cat_id</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="c1"># 添加有效性检查
+</span>                <span class="k">if</span> <span class="n">cat_id</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">envs</span><span class="p">.</span><span class="n">index2name</span><span class="p">:</span>
+                	<span class="k">return</span> <span class="n">cat_id</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="bp">...</span>
+</code></pre></div></div> <p>加入轮次选择 main.py</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[RoboTHOR]]></summary></entry><entry><title type="html">UniGoal</title><link href="https://son4ta.github.io/blog/2025/UniGoal/" rel="alternate" type="text/html" title="UniGoal"/><published>2025-04-25T14:32:13+00:00</published><updated>2025-04-25T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2025/UniGoal</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/UniGoal/"><![CDATA[<h1 id="unigoal">UniGoal</h1> <p>在机器人导航领域，现有方法通常针对特定任务（如物体导航、图像导航或文本导航）设计独立框架，导致模型泛化能力受限且难以应对真实场景中复杂的多模态指令。为此，本研究提出UniGoal ——首个零样本学习的通用目标导航框架，通过统一的图表示与大语言模型（LLM）推理 ，实现了跨物体类别、图像和文本描述三类任务的零样本导航。其核心创新在于：（1）构建动态场景图与目标图的统一表示，将环境感知与目标描述转化为结构化图，保留丰富的空间与语义关系；（2）设计<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=多阶段探索策略&amp;zhida_source=entity">多阶段探索策略</a>，根据图匹配程度动态调整探索策略，在零匹配阶段通过子图分解逐步探索未知区域，部分匹配时利用坐标投影与锚点对齐推断目标位置，完全匹配时通过场景图修正与验证确保定位准确。此外，引入<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=黑名单机制&amp;zhida_source=entity">黑名单机制</a>避免重复探索失败区域，显著提升效率。</p> <p>UniGoal的推理流程以图匹配为核心，结合LLM的推理能力实现高效决策。在场景图构建中，实时融合RGB-D观测中的语义信息，形成拓扑结构。目标图则根据输入类型（物体类别、图像或文本）通过LLM/VLM处理生成，确保与场景图表示的一致性。实验表明，UniGoal在<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=MatterPort3D&amp;zhida_source=entity">MatterPort3D</a>、<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=HM3D&amp;zhida_source=entity">HM3D</a>等数据集上全面超越现有零样本的专用任务方法（如<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=Mod-IIN&amp;zhida_source=entity">Mod-IIN</a>[1]、SG-Nav[2]）及需训练的通用方法（如<a href="https://zhida.zhihu.com/search?content_id=255217302&amp;content_type=Article&amp;match_order=1&amp;q=GOAT&amp;zhida_source=entity">GOAT</a>[3]），在物体导航（成功率41.0%）、图像实例导航（成功率60.2%）和文本导航（成功率20.2%）任务中均达最优性能。其无需训练的特性与多模态通用性，为机器人在未知环境中的灵活导航提供了全新范式，拥有在真实场景落地的潜力。</p> <table> <tbody> <tr> <td>——[CVPR2025</td> <td>UniGoal：通用零样本目标导航，Navigate to Any Goal! - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/30973430092)</td> </tr> </tbody> </table> <h2 id="环境配置">环境配置</h2> <h3 id="一conda">一、Conda</h3> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PyTorch  2.5.1
+Python  3.12<span class="o">(</span>ubuntu22.04<span class="o">)</span>
+CUDA  12.4
+
+git clone https://github.com/bagh2178/UniGoal.git
+<span class="nb">cd </span>UniGoal
+conda create <span class="nt">-n</span> unigoal <span class="nv">python</span><span class="o">==</span>3.8
+<span class="c"># conda init</span>
+conda activate unigoal
+
+<span class="c"># AutoDL的学术加速</span>
+<span class="nb">source</span> /etc/network_turbo
+<span class="nb">unset </span>http_proxy <span class="o">&amp;&amp;</span> <span class="nb">unset </span>https_proxy
+</code></pre></div></div> <h3 id="二habitat-sim-023----habitat-lab">二、Habitat-sim-0.2.3 &amp; Habitat-lab</h3> <p>请注意，这里的Python一定要是<code class="language-plaintext highlighter-rouge">==3.8</code></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>habitat-sim<span class="o">==</span>0.2.3 <span class="nt">-c</span> conda-forge <span class="nt">-c</span> aihabitat
+ withbullet headless <span class="nt">--override-channels</span>
+pip <span class="nb">install</span> <span class="nt">-e</span> third_party/habitat-lab
+</code></pre></div></div> <h3 id="三安装第三方包">三、安装第三方包</h3> <h4 id="1-lightglue-githubcomcvglightgluegit">1. <strong>LightGlue</strong> (<code class="language-plaintext highlighter-rouge">github.com/cvg/LightGlue.git</code>)</h4> <p>功能：一种基于深度学习的局部特征匹配算法，专为稀疏特征匹配设计。它通过自适应计算机制动态调整推理深度和特征点数量，显著提升了匹配效率和精度</p> <ul> <li>支持自省机制，可提前终止简单图像对的推理过程</li> <li>在3D重建、SLAM等对实时性要求高的场景中表现优异</li> </ul> <h4 id="2-detectron2-githubcomfacebookresearchdetectron2git">2. <strong>Detectron2</strong> (<code class="language-plaintext highlighter-rouge">github.com/facebookresearch/detectron2.git</code>)</h4> <p>功能：Meta开源的计算机视觉工具库，支持目标检测、实例分割、关键点检测等任务</p> <ul> <li>提供预训练模型如Faster R-CNN、Mask R-CNN等</li> <li>支持灵活的配置系统和分布式训练</li> </ul> <h4 id="3-grounded-segment-anything-idea-researchgrounded-segment-anything">3. <strong>Grounded-Segment-Anything</strong> (<code class="language-plaintext highlighter-rouge">IDEA-Research/Grounded-Segment-Anything</code>)</h4> <p>核心组件:</p> <ul> <li> <p><strong>Segment Anything (SAM)</strong></p> <p>功能：Meta提出的通用图像分割模型，支持零样本分割（无需预训练即可分割任意物体）</p> <p>模型文件：<code class="language-plaintext highlighter-rouge">sam_vit_h_4b8939.pth</code></p> <p>是其预训练权重，适用于高精度分割任务</p> </li> <li> <p><strong>GroundingDINO</strong></p> <p>功能：基于文本提示的零样本目标检测模型，可将自然语言描述与图像中的物体关联</p> <ul> <li><strong>模型文件</strong>：<code class="language-plaintext highlighter-rouge">groundingdino_swint_ogc.pth</code>是其预训练权重，支持如“检测戴帽子的人”等复杂语义查询</li> </ul> </li> </ul> <h4 id="4-依赖项与模型文件">4. <strong>依赖项与模型文件</strong></h4> <p><code class="language-plaintext highlighter-rouge">segment_anything</code>：SAM的PyTorch实现，提供图像分割基础功能</p> <p><code class="language-plaintext highlighter-rouge">GroundingDINO依赖</code>：包含文本-图像特征融合模块，支持多模态目标检测</p> <p>模型文件用途：</p> <ul> <li><code class="language-plaintext highlighter-rouge">sam_vit_h_4b8939.pth</code>：SAM的ViT-Huge模型权重，适合高精度分割。</li> <li><code class="language-plaintext highlighter-rouge">groundingdino_swint_ogc.pth</code>：GroundingDINO的Swin Transformer权重，支持文本引导检测。</li> </ul> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>git+https://github.com/cvg/LightGlue.git
+pip <span class="nb">install </span>git+https://github.com/facebookresearch/detectron2.git <span class="c"># 请保证有足够的运行内存编译</span>
+git clone https://github.com/IDEA-Research/Grounded-Segment-Anything.git third_party/Grounded-Segment-Anything
+<span class="nb">cd </span>third_party/Grounded-Segment-Anything
+git checkout 5cb813f <span class="c"># 会得到一个警告：分离头指针状态，不用理会</span>
+pip <span class="nb">install</span> <span class="nt">-e</span> segment_anything
+pip <span class="nb">install</span> <span class="nt">--no-build-isolation</span> <span class="nt">-e</span> GroundingDINO
+<span class="nb">cd</span> ../../
+<span class="nb">mkdir</span> <span class="nt">-p</span> data/models/  <span class="c"># -p 参数自动创建多级目录，这里原作者没搞，wget -O 参数指定的是完整文件路径，不会自动创建目录</span>
+wget <span class="nt">-O</span> data/models/sam_vit_h_4b8939.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+<span class="c"># data/models/sam_vit_h_4b 100%[=================================&gt;]   2.39G  13.5MB/s    in 3m 9s</span>
+
+<span class="c"># source /etc/network_turbo 这里需要VPN ↓</span>
+wget <span class="nt">-O</span> data/models/groundingdino_swint_ogc.pth https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+<span class="c"># data/models/groundingdin 100%[=================================&gt;] 661.85M   121MB/s    in 5.5s</span>
+</code></pre></div></div> <h3 id="四安装别的小东西">四、安装别的小东西</h3> <p><code class="language-plaintext highlighter-rouge">pytorch::faiss-gpu</code> 是 Meta AI 开发的 <strong>GPU 加速版 Faiss 库</strong>，专为大规模向量相似性搜索和聚类设计，可能和图搜索有关系</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>pytorch::faiss-gpu
+<span class="c"># 如果清华源抽风</span>
+<span class="c"># conda install pytorch::faiss-gpu -c pytorch -c nvidia -c anaconda --override-channels</span>
+pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+</code></pre></div></div> <p>至此，环境配置完成。</p> <h2 id="数据集hm3d">数据集（HM3D）</h2> <h3 id="数据集下载">数据集下载</h3> <p>为了数据集组织正确，先创建文件夹：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p data/datasets/instance_imagenav/hm3d/v3/
+mkdir -p data/scene_datasets/hm3d_v0.2/val/
+</code></pre></div></div> <p>然后，下载两个压缩包：</p> <p>https://dl.fbaipublicfiles.com/habitat/data/datasets/imagenav/hm3d/v3/instance_imagenav_hm3d_v3.zip</p> <p>https://mp-app-prod.s3.amazonaws.com/habitat/v1.0/hm3d-val-habitat-v0.2.tar</p> <p>最后，对于<code class="language-plaintext highlighter-rouge">instance_imagenav_hm3d_v3.zip</code>，把<code class="language-plaintext highlighter-rouge">val</code>、<code class="language-plaintext highlighter-rouge">train</code>和<code class="language-plaintext highlighter-rouge">val_mini</code>复制到<code class="language-plaintext highlighter-rouge">data/datasets/instance_imagenav/hm3d/v3/</code>下面</p> <p>对于<code class="language-plaintext highlighter-rouge">hm3d-val-habitat-v0.2.tar</code>，一样操作</p> <p>注意，需要这么组织数据集，名字也要一模一样：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UniGoal/
+└── data/
+    ├── datasets/
+    │   └── instance_imagenav/
+    │       └── hm3d/
+    │           └── v3/
+    │               └── val/
+    │                   ├── content/
+    │                   │   ├── 4ok3usBNeis.json.gz
+    │                   │   ├── 5cdEh9F2hJL.json.gz
+    │                   │   ├── ...
+    │                   │   └── zt1RVoi7PcG.json.gz
+    │                   └── val.json.gz
+    └── scene_datasets/
+        └── hm3d_v0.2/
+            └── val/
+                ├── 00800-TEEsavR23oF/
+                │   ├── TEEsavR23oF.basis.glb
+                │   └── TEEsavR23oF.basis.navmesh
+                ├── 00801-HaxA7YrQdEC/
+                ├── ...
+                └── 00899-58NLZxWBSpk/
+</code></pre></div></div> <h2 id="llm-and-vlm"><strong>LLM and VLM</strong></h2> <p>Option 1: Install Ollama.【我们这里使用这个选项】</p> <p><a href="https://ollama.readthedocs.io/linux/#ollama">Linux 文档 - Ollama 中文文档</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># source /etc/network_turbo</span>
+<span class="nb">export </span><span class="nv">OLLAMA_MODELS</span><span class="o">=</span>/root/autodl-tmp/ollama_models
+<span class="nb">echo</span> <span class="s1">'export OLLAMA_MODELS=/root/autodl-tmp/ollama_models'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+<span class="nb">sudo mkdir</span> <span class="nt">-p</span> ~/autodl-tmp/ollama_models
+
+<span class="c"># Environment="OLLAMA_MODELS=/root/autodl-tmp/ollama_models"</span>
+<span class="c"># sudo vim /etc/systemd/system/ollama.service</span>
+
+curl <span class="nt">-fsSL</span> https://ollama.com/install.sh | sh
+<span class="c"># 不用理会：</span>
+<span class="c"># WARNING: systemd is not running</span>
+<span class="c"># WARNING: Unable to detect NVIDIA/AMD GPU. Install lspci or lshw to automatically detect and install GPU dependencies.</span>
+<span class="c"># 如果你没有GPU的情况下，ollama会自行关闭，需要重新启动</span>
+ollama serve &amp;
+
+ollama pull llama3.2-vision
+<span class="c"># ollama支持中断继续下载，放心Kill</span>
+<span class="nb">export </span><span class="nv">HF_ENDPOINT</span><span class="o">=</span>https://hf-mirror.com
+</code></pre></div></div> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250425170952781.png" alt="image-20250425170952781"/></p> <p>Option 2: Use LLM and VLM via your own API. Change the <code class="language-plaintext highlighter-rouge">llm_model</code>, <code class="language-plaintext highlighter-rouge">vlm_model</code>, <code class="language-plaintext highlighter-rouge">api_key</code>, <code class="language-plaintext highlighter-rouge">base_url</code> in the configuration file <code class="language-plaintext highlighter-rouge">configs/config_habitat.yaml</code> to your own.</p> <h2 id="evaluation">Evaluation</h2> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama serve &amp; <span class="c"># 如果没启动</span>
+<span class="nb">nohup </span>ollama serve &amp; <span class="c"># 这会启动Ollama后台服务。保持此终端运行或使用nohup将其置于后台</span>
+netstat <span class="nt">-tuln</span> | <span class="nb">grep </span>11434 <span class="c"># 运行以下命令查看11434端口是否被监听</span>
+
+<span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span>0 python main.py  <span class="c"># instance-image-goal</span>
+
+<span class="c"># 首次运行huggingface会出问题</span>
+
+<span class="nb">export </span><span class="nv">HF_ENDPOINT</span><span class="o">=</span>https://hf-mirror.com
+
+OSError: We couldn<span class="s1">'t connect to '</span>https://huggingface.co<span class="s1">' to load this file, couldn'</span>t find it <span class="k">in </span>the cached files and it looks like bert-base-uncased is not the path to a directory containing a file named config.json.
+Checkout your internet connection or see how to run the library <span class="k">in </span>offline mode at <span class="s1">'https://huggingface.co/docs/transformers/installation#offline-mode'</span><span class="nb">.</span>
+
+</code></pre></div></div> <h2 id="debug">DeBug</h2> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libEGL.so.1: cannot open shared object file: No such file or directory</code></p> <p>觉得眼熟？ImportError正在全世界发生！</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    import habitat_sim
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/habitat_sim-0.2.3-py3.8-linux-x86_64.egg/habitat_sim/__init__.py"</span>, line 13, <span class="k">in</span> &lt;module&gt;
+    import habitat_sim._ext.habitat_sim_bindings
+ImportError: libEGL.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libegl1 mesa-utils libgl1-mesa-glx
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ModuleNotFoundError: No module named 'openai'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 15, <span class="k">in</span> &lt;module&gt;
+    from src.graph.graph import Graph
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 9, <span class="k">in</span> &lt;module&gt;
+    from openai import OpenAI
+ModuleNotFoundError: No module named <span class="s1">'openai'</span>
+</code></pre></div></div> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>openai
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 15, <span class="k">in</span> &lt;module&gt;
+    from src.graph.graph import Graph
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 28, <span class="k">in</span> &lt;module&gt;
+    from .utils.utils import filter_objects, gobs_to_detection_list
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/utils.py"</span>, line 7, <span class="k">in</span> &lt;module&gt;
+    import faiss
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/__init__.py"</span>, line 16, <span class="k">in</span> &lt;module&gt;
+    from .loader import <span class="k">*</span>
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/loader.py"</span>, line 65, <span class="k">in</span> &lt;module&gt;
+    from .swigfaiss import <span class="k">*</span>
+  File <span class="s2">"/root/miniconda3/envs/unigoal/lib/python3.8/site-packages/faiss/swigfaiss.py"</span>, line 13, <span class="k">in</span> &lt;module&gt;
+    from <span class="nb">.</span> import _swigfaiss
+ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span><span class="nv">mkl</span><span class="o">=</span>2021 
+</code></pre></div></div> <p>报错<code class="language-plaintext highlighter-rouge">ImportError: libmkl_intel_lp64.so.1: cannot open shared object file: No such file or directory</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num timesteps 0, episode_idx 0
+update_observation 6...
+    mapping3d...
+        compute_spatial_similarities...
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 151, <span class="k">in </span>main
+    graph.update_scenegraph<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 716, <span class="k">in </span>update_scenegraph
+    self.mapping3d<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 524, <span class="k">in </span>mapping3d
+    spatial_sim <span class="o">=</span> compute_spatial_similarities<span class="o">(</span>self.cfg, fg_detection_list, self.objects<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/mapping.py"</span>, line 21, <span class="k">in </span>compute_spatial_similarities
+    spatial_sim <span class="o">=</span> compute_overlap_matrix_2set<span class="o">(</span>cfg, objects, detection_list<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/utils.py"</span>, line 331, <span class="k">in </span>compute_overlap_matrix_2set
+    iou <span class="o">=</span> compute_3d_iou_accuracte_batch<span class="o">(</span>bbox_map, bbox_new<span class="o">)</span> <span class="c"># (m, n)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/utils/iou.py"</span>, line 58, <span class="k">in </span>compute_3d_iou_accuracte_batch
+    import pytorch3d.ops as ops
+ModuleNotFoundError: No module named <span class="s1">'pytorch3d'</span>
+
+</code></pre></div></div> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="s2">"git+https://github.com/facebookresearch/pytorch3d.git"</span> <span class="nt">-v</span> <span class="p">;</span> /usr/bin/shutdown  
+<span class="c"># 一定要从从源码安装，不然很逆天</span>
+<span class="c"># 会一堆警告，不用管，没停就是正常</span>
+<span class="c"># 要在有GPU的环境下（如果你是租用平台，就得开着GPU）</span>
+<span class="c"># 20分钟左右（实测23:44到00:07）</span>
+</code></pre></div></div> <p>报错：graph.py 的<code class="language-plaintext highlighter-rouge">878</code>和<code class="language-plaintext highlighter-rouge">903</code>行 <code class="language-plaintext highlighter-rouge">AttributeError: 'numpy.ndarray' object has no attribute 'cpu'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 166, <span class="k">in </span>main
+    goal <span class="o">=</span> graph.explore<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 732, <span class="k">in </span>explore
+    goal <span class="o">=</span> self.get_goal<span class="o">(</span>goal<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 903, <span class="k">in </span>get_goal
+    frontier_locations <span class="o">=</span> frontier_locations.cpu<span class="o">()</span>.numpy<span class="o">()</span>
+AttributeError: <span class="s1">'numpy.ndarray'</span> object has no attribute <span class="s1">'cpu'</span>
+</code></pre></div></div> <p>修改<code class="language-plaintext highlighter-rouge">/root/autodl-tmp/UniGoal/src/graph/graph.py</code>的<code class="language-plaintext highlighter-rouge">878</code>和<code class="language-plaintext highlighter-rouge">903</code>行：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># frontier_locations = frontier_locations.cpu().numpy()
+</span><span class="n">frontier_locations</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">tensor</span><span class="p">(</span><span class="n">frontier_locations</span><span class="p">).</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span>
+</code></pre></div></div> <p>报错：graph.py <code class="language-plaintext highlighter-rouge">get_goal(goal)</code> <code class="language-plaintext highlighter-rouge">917</code> 行<code class="language-plaintext highlighter-rouge">AttributeError: 'numpy.ndarray' object has no attribute 'cpu'</code></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    goal <span class="o">=</span> graph.explore<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 732, <span class="k">in </span>explore
+    goal <span class="o">=</span> self.get_goal<span class="o">(</span>goal<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/graph/graph.py"</span>, line 917, <span class="k">in </span>get_goal
+    scores +<span class="o">=</span> distances_16_inverse
+ValueError: operands could not be broadcast together with shapes <span class="o">(</span>1016,<span class="o">)</span> <span class="o">(</span>934,<span class="o">)</span> <span class="o">(</span>1016,<span class="o">)</span>
+</code></pre></div></div> <p>全面修改<code class="language-plaintext highlighter-rouge">get_goal(goal)</code> 函数：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_goal</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">fbe_map</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">zeros_like</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fbe_map</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">fbe_free_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first free 
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fbe_map</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first free 
+</span>            <span class="n">fbe_map</span><span class="p">[</span><span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">binary_dilation</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">].</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">(),</span> <span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">disk</span><span class="p">(</span><span class="mi">4</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># dilate obstacle
+</span>
+            <span class="n">fbe_cp</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">fbe_map</span><span class="p">)</span>
+            <span class="n">fbe_cpp</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">fbe_map</span><span class="p">)</span>
+            <span class="n">fbe_cp</span><span class="p">[</span><span class="n">fbe_cp</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># unknown space
+</span>            <span class="n">fbe_cp</span><span class="p">[</span><span class="n">fbe_cp</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># free and obstacle
+</span>            <span class="n">selem</span> <span class="o">=</span> <span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">fbe_cpp</span><span class="p">[</span><span class="n">skimage</span><span class="p">.</span><span class="n">morphology</span><span class="p">.</span><span class="nf">binary_dilation</span><span class="p">(</span><span class="n">fbe_cp</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">(),</span> <span class="n">selem</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># dilate unknown space
+</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">fbe_map</span> <span class="o">-</span> <span class="n">fbe_cpp</span>  <span class="c1"># frontier area
+</span>            <span class="n">frontier_map</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">frontier_map</span> <span class="o">=</span> <span class="n">frontier_map</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">num_of_goal</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">).</span><span class="nf">to</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">frontier_locations</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">stack</span><span class="p">([</span><span class="n">torch</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">frontier_map</span><span class="p">)[</span><span class="mi">1</span><span class="p">]]).</span><span class="n">T</span>
+            <span class="n">num_frontiers</span> <span class="o">=</span> <span class="n">frontier_locations</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">num_frontiers</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># 统一使用初始前沿位置计算 --------------------------------------------------
+</span>            <span class="n">input_pose</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+            <span class="n">input_pose</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_pose</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">map_size_cm</span><span class="o">/</span><span class="mi">100</span> <span class="o">-</span> <span class="n">input_pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">input_pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">input_pose</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">traversible</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_traversible</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">full_map</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_pose</span><span class="p">)</span>
+
+            <span class="c1"># 初始距离计算
+</span>            <span class="n">planner</span> <span class="o">=</span> <span class="nc">FMMPlanner</span><span class="p">(</span><span class="n">traversible</span><span class="p">)</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">planner</span><span class="p">.</span><span class="nf">set_goal</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">fmm_dist</span> <span class="o">=</span> <span class="n">planner</span><span class="p">.</span><span class="n">fmm_dist</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># 统一将前沿位置转换为numpy并计算初始距离
+</span>            <span class="n">frontier_locations_np</span> <span class="o">=</span> <span class="n">frontier_locations</span><span class="p">.</span><span class="nf">cpu</span><span class="p">().</span><span class="nf">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># 加1补偿坐标偏移
+</span>            <span class="n">distances</span> <span class="o">=</span> <span class="n">fmm_dist</span><span class="p">[</span><span class="n">frontier_locations_np</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">frontier_locations_np</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">/</span> <span class="mi">20</span>
+
+            <span class="c1"># 初始前沿筛选
+</span>            <span class="n">distance_threshold</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">valid_mask</span> <span class="o">=</span> <span class="n">distances</span> <span class="o">&gt;=</span> <span class="n">distance_threshold</span>
+            <span class="n">valid_distances</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">valid_mask</span><span class="p">]</span>
+            <span class="n">valid_locations</span> <span class="o">=</span> <span class="n">frontier_locations_np</span><span class="p">[</span><span class="n">valid_mask</span><span class="p">]</span>  <span class="c1"># 保存有效前沿位置
+</span>
+            <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">valid_distances</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+
+            <span class="c1"># 初始化scores
+</span>            <span class="n">scores</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">clip</span><span class="p">(</span><span class="n">valid_distances</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">distance_threshold</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance_threshold</span><span class="p">)</span>
+
+            <span class="c1"># 处理传入的goal时使用同一组前沿位置 ----------------------------------------
+</span>            <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">ndarray</span><span class="p">)):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># 使用已筛选的有效前沿计算新距离
+</span>                    <span class="n">planner_goal</span> <span class="o">=</span> <span class="nc">FMMPlanner</span><span class="p">(</span><span class="n">traversible</span><span class="p">)</span>
+                    <span class="n">state_goal</span> <span class="o">=</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nf">int</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">planner_goal</span><span class="p">.</span><span class="nf">set_goal</span><span class="p">(</span><span class="n">state_goal</span><span class="p">)</span>
+                    <span class="n">fmm_dist_goal</span> <span class="o">=</span> <span class="n">planner_goal</span><span class="p">.</span><span class="n">fmm_dist</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="c1"># 直接使用valid_locations计算距离
+</span>                    <span class="n">goal_distances</span> <span class="o">=</span> <span class="n">fmm_dist_goal</span><span class="p">[</span><span class="n">valid_locations</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">valid_locations</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">/</span> <span class="mi">20</span>
+                    <span class="n">goal_scores</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">clip</span><span class="p">(</span><span class="n">goal_distances</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">distance_threshold</span><span class="p">)</span> <span class="o">-</span> <span class="n">distance_threshold</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span>
+                    <span class="n">scores</span> <span class="o">+=</span> <span class="n">goal_scores</span>  <span class="c1"># 保证形状一致
+</span>
+                    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Goal processing error: </span><span class="si">{</span><span class="nf">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+                        <span class="c1"># 最终目标选择
+</span>                        <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="bp">None</span>
+                        <span class="n">best_idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+                        <span class="n">final_goal</span> <span class="o">=</span> <span class="n">valid_locations</span><span class="p">[</span><span class="n">best_idx</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 补偿坐标偏移
+</span>                        <span class="k">return</span> <span class="n">final_goal</span>
+</code></pre></div></div> <p>KeyError: 6</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank:0, episode:8, cat_id:0, cat_name:chair
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"main.py"</span>, line 259, <span class="k">in</span> &lt;module&gt;
+    main<span class="o">()</span>
+  File <span class="s2">"main.py"</span>, line 205, <span class="k">in </span>main
+    obs, _, <span class="k">done</span>, infos, observations_habitat <span class="o">=</span> agent.step<span class="o">(</span>agent_input<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/agent/unigoal/agent.py"</span>, line 404, <span class="k">in </span>step
+    self.reset<span class="o">()</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/agent/unigoal/agent.py"</span>, line 89, <span class="k">in </span>reset
+    self.envs.set_goal_cat_id<span class="o">(</span>idx<span class="o">)</span>
+  File <span class="s2">"/root/autodl-tmp/UniGoal/src/envs/habitat/instanceimagegoal_env.py"</span>, line 264, <span class="k">in </span>set_goal_cat_id
+    self.info[<span class="s1">'goal_name'</span><span class="o">]</span> <span class="o">=</span> self.index2name[idx]
+KeyError: 6
+</code></pre></div></div> <p>在agent.py 692行修改：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="nf">if </span><span class="p">((</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> \
+                    <span class="o">+</span><span class="p">((</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> \
+                        <span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">instance_imagegoal</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># return int(ins_whwh[0][0])
+</span>                <span class="n">cat_id</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">ins_whwh</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="c1"># 添加有效性检查
+</span>                <span class="k">if</span> <span class="n">cat_id</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">envs</span><span class="p">.</span><span class="n">index2name</span><span class="p">:</span>
+                	<span class="k">return</span> <span class="n">cat_id</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="bp">...</span>
+</code></pre></div></div> <p>加入轮次选择 main.py</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[服务器下复现UniGoal]]></summary></entry><entry><title type="html">AutoDL最佳实践</title><link href="https://son4ta.github.io/blog/2025/1-autoDL/" rel="alternate" type="text/html" title="AutoDL最佳实践"/><published>2025-04-19T14:32:13+00:00</published><updated>2025-04-19T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2025/1-autoDL</id><content type="html" xml:base="https://son4ta.github.io/blog/2025/1-autoDL/"><![CDATA[<h1 id="autodl最佳实践">AutoDL最佳实践</h1> <p>因为课题需要，我展开了对AutoDL和<a href="https://gpushare.com/">恒源云</a>平台的试用，恒源云请一定要<a href="https://gpushare.com/center/account/student">学生认证</a>一下</p> <p><a href="https://www.autodl.com/docs">AutoDL文档</a></p> <h2 id="开始">开始</h2> <h2 id="克隆实例">克隆实例</h2> <p>在使用时发现，你租用的实例只有在<strong>同一台服务器</strong>（一般有8-10个GPU）有空闲的时候，你才能开机。</p> <p><strong>是刚好！在！同一个服务器的！可怜的8-10张显卡！有！空！闲！</strong></p> <p>完全不是人，伟大的AutoDL降临了伟大的<strong>克隆实例</strong>功能，可以完全克隆，克隆实例可以把系统和数据盘的东西克隆到同区</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250420155046472.png" alt="image-20250420155046472" style="zoom:75%;"/></p> <p>[^伟大，无需多言，但是一天只有三次，别带滔博节奏]:</p> <h2 id="跨实例复制">跨实例复制</h2> <p>有人就要问了，主播主播，克隆实例虽然好用，但是就一天三次机会，万一克隆完还是被占了，还是太吃操作了。</p> <p>在实际使用中，你的一堆实例真是不知道哪个能用，六冠王<strong>跨实例复制</strong>来了！</p> <p><img src="S:\Programming\Son4ta.github.io\Son4ta.github.io\assets\img\image-20250420155813515.png" alt="image-20250420155813515"/></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
 </code></pre></div></div> <p>启动docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> systemctl start docker
 </code></pre></div></div> <p>因为正常执行build大概率会因为网络问题翻车</p> <p>所以先安装</p> <p>[ERROR <a href="https://github.com/ifzhang/ByteTrack/issues/189">internal] load metadata for nvcr.io/nvidia/tensorrt:21.09-py3 · Issue #189 · ifzhang/ByteTrack (github.com)</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull nvcr.io/nvidia/pytorch:21.09-py3 -–registry-mirror<span class="o">=</span>https://mirror.iscas.ac.cn<span class="o">(</span>国内镜像源地址<span class="o">)</span>
 </code></pre></div></div> <p>启动docker</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torchrun --standalone --nnodes 1 --nproc-per-node 1 vla-scripts/finetune.py \
@@ -398,174 +1133,4 @@ Example:
 
 
 </code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
-</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="GPT"/><category term="Prompt"/><category term="LLM"/><summary type="html"><![CDATA[使用ChatGPT-4o，这是一个实验性的文档，因为之前我其实一直不喜欢这种“提示词工程”，可能真香了hh]]></summary></entry><entry><title type="html">Ubuntu下Docker安装（显卡机，无sudo权限）</title><link href="https://son4ta.github.io/blog/2024/2/" rel="alternate" type="text/html" title="Ubuntu下Docker安装（显卡机，无sudo权限）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/2</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/2/"><![CDATA[<p>卸载原来的docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove docker docker-engine docker.io containerd runc
-</code></pre></div></div> <p>安装依赖</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
-</code></pre></div></div> <p>添加 Docker 官方 GPG key</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#官方，挑战网络，做回自己（可能国内现在访问会存在问题）</span>
-curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
-<span class="c">#阿里</span>
-curl <span class="nt">-fsSL</span> https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
-</code></pre></div></div> <p>更新源</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Docker官方源</span>
-<span class="nb">echo</span> <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
-
-<span class="c">#阿里apt源</span>
-<span class="nb">echo</span> <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
-
-<span class="c">#更新源</span>
-apt update
-apt-get update
-</code></pre></div></div> <p>安装docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#安装最新版本的Docker</span>
-apt <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
-<span class="c">#等待安装完成</span>
-
-<span class="c">#查看Docker版本</span>
-docker version
-
-<span class="c">#启动服务</span>
-systemctl start docker
-
-<span class="c">#查看Docker运行状态</span>
-systemctl status docker
-</code></pre></div></div> <p>安装补全工具</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>bash-completion
-
-curl <span class="nt">-L</span> https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker <span class="nt">-o</span> /etc/bash_completion.d/docker.sh
-
-<span class="nb">source</span> /etc/bash_completion.d/docker.sh
-</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Docker安装]]></summary></entry><entry><title type="html">DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）</title><link href="https://son4ta.github.io/blog/2024/3/" rel="alternate" type="text/html" title="DreamWaQ在Ubuntu服务器上的安装部署与Debug（legged_gym安装）"/><published>2024-11-18T14:32:13+00:00</published><updated>2024-11-18T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/3</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/3/"><![CDATA[<p>在复现这个代码： <a href="https://github.com/Manaro-Alpha/DreamWaQ">DreamWaQ</a> 注意要求：python</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: Package <span class="s1">'isaacgym'</span> requires a different Python: 3.10.14 not <span class="k">in</span> <span class="s1">'&lt;3.9,&gt;=3.6'</span>
-
-conda create <span class="nt">-n</span> isaacgym <span class="nv">python</span><span class="o">=</span>3.8
-conda activate isaacgym
-
-<span class="c"># 查看虚拟环境列表</span>
-<span class="c"># conda env list</span>
-<span class="c"># 退出当前环境到base环境</span>
-<span class="c"># conda deactivate    </span>
-<span class="c"># 清除user_env环境      </span>
-<span class="c"># conda remove -n user_env --all  </span>
-</code></pre></div></div> <p>先去下载安装包<a href="https://developer.nvidia.com/isaac-gym">安装包</a></p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#解压</span>
-<span class="nb">tar</span> <span class="nt">-xzvf</span> IsaacGym_Preview_4_Package.tar.gz
-</code></pre></div></div> <p>关键！安装isaacgym</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 这里会安装torch</span>
-pip <span class="nb">install</span> <span class="nt">-e</span> ./isaacgym/python/
-</code></pre></div></div> <p>再运行</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Manaro-Alpha/DreamWaQ.git
-<span class="nb">cd </span>DreamWaQ
-pip <span class="nb">install</span> <span class="nt">-e</span> ./rsl_rl-1.0.2
-pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym
-</code></pre></div></div> <p>完美解决</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing collected packages: legged_gym
-  Running setup.py develop <span class="k">for </span>legged_gym
-Successfully installed legged_gym-1.0.0
-</code></pre></div></div> <p>ps:tensorboard要安装，Numpy版本也要调整</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>tensorboard
-pip uninstall numpy <span class="c">#不必要</span>
-pip <span class="nb">install </span><span class="nv">numpy</span><span class="o">==</span>1.23.5
-</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing collected packages: numpy
-  Attempting uninstall: numpy
-    Found existing installation: numpy 1.24.4
-    Uninstalling numpy-1.24.4:
-      Successfully uninstalled numpy-1.24.4
-Successfully installed numpy-1.23.5
-</code></pre></div></div> <p>最后？</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
-<span class="c"># 如果需要改GPU</span>
-<span class="nt">--graphics_device_id</span> 1 <span class="nt">--sim_device</span> cuda:1
-<span class="c"># </span>
-<span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span>1 
-</code></pre></div></div> <p>如果你的显卡没有图形化或者有多张显卡使用了<code class="language-plaintext highlighter-rouge">CUDA_VISIBLE_DEVICES=1</code>的情况下，可能会出现下面的情况，使用<code class="language-plaintext highlighter-rouge">--headless</code>来避免：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>torch<span class="o">)</span> root@wcivithvtopwwwpm-snow-f994bb78f-6f6wd:/data/coding/DreamWaQ# python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1
-Importing module <span class="s1">'gym_38'</span> <span class="o">(</span>/data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so<span class="o">)</span>
-Setting GYM_USD_PLUG_INFO_PATH to /data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
-PyTorch version 1.11.0+cu113
-Device count 1
-/data/coding/DreamWaQ/isaacgym/python/isaacgym/_bindings/src/gymtorch
-Using /data/.rootcache/torch_extensions/py38_cu113 as PyTorch extensions root...
-Emitting ninja build file /data/.rootcache/torch_extensions/py38_cu113/gymtorch/build.ninja...
-Building extension module gymtorch...
-Allowing ninja to <span class="nb">set </span>a default number of workers... <span class="o">(</span>overridable by setting the environment variable <span class="nv">MAX_JOBS</span><span class="o">=</span>N<span class="o">)</span>
-ninja: no work to <span class="k">do</span><span class="nb">.</span>
-Loading extension module gymtorch...
-Setting seed: 5
-Not connected to PVD
-+++ Using GPU PhysX
-Physics Engine: PhysX
-Physics Device: cuda:0
-GPU Pipeline: enabled
-Segmentation fault <span class="o">(</span>core dumped<span class="o">)</span>
-</code></pre></div></div> <p>怎么办？只有杀！</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#只有杀！--headless</span>
-python3 ./legged_gym/legged_gym/scripts/train.py <span class="nt">--task</span><span class="o">=</span>go1 <span class="nt">--headless</span>
-</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">################################################################################</span>
-                       Learning iteration 90/3000                       
-
-                       Computation: 18159 steps/s <span class="o">(</span>collection: 4.440s, learning 0.973s<span class="o">)</span>
-               Value <span class="k">function </span>loss: 0.0032
-                    Surrogate loss: <span class="nt">-0</span>.0007
-             Autoenc <span class="k">function </span>loss: 5.9655
-             Mean action noise std: 0.56
-                       Mean reward: 3.77
-               Mean episode length: 507.48
-      Mean episode rew_action_rate: <span class="nt">-0</span>.0363
-       Mean episode rew_ang_vel_xy: <span class="nt">-0</span>.0621
-      Mean episode rew_base_height: <span class="nt">-0</span>.0049
-          Mean episode rew_dof_acc: <span class="nt">-0</span>.0483
-    Mean episode rew_feet_air_time: <span class="nt">-0</span>.0017
-      Mean episode rew_joint_power: <span class="nt">-0</span>.0007
-        Mean episode rew_lin_vel_z: <span class="nt">-0</span>.0197
-      Mean episode rew_orientation: <span class="nt">-0</span>.0623
-Mean episode rew_power_distribution: <span class="nt">-0</span>.0003
-       Mean episode rew_smoothness: <span class="nt">-0</span>.0062
- Mean episode rew_tracking_ang_vel: 0.1954
- Mean episode rew_tracking_lin_vel: 0.2059
-        Mean episode terrain_level: 0.2157
-<span class="nt">--------------------------------------------------------------------------------</span>
-                   Total timesteps: 8945664
-                    Iteration <span class="nb">time</span>: 5.41s
-                        Total <span class="nb">time</span>: 429.71s
-                               ETA: 13741.3s
-</code></pre></div></div> <p>TODO:如果你有崭新的显卡！请尝试重新安装驱动！<a href="https://blog.csdn.net/ggggfff1/article/details/135487322">参考</a></p>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[Ubuntu下Isaac Gym安装教程，艾西古，最喜欢的一集嗷，debug爽！Tesla P4，老爷机就是牛！]]></summary></entry><entry><title type="html">WSL下配置DreamWqa环境</title><link href="https://son4ta.github.io/blog/2024/1/" rel="alternate" type="text/html" title="WSL下配置DreamWqa环境"/><published>2024-10-10T14:32:13+00:00</published><updated>2024-10-10T14:32:13+00:00</updated><id>https://son4ta.github.io/blog/2024/1</id><content type="html" xml:base="https://son4ta.github.io/blog/2024/1/"><![CDATA[<p>Job for docker.service failed because the control process exited with error code. 最后发现是之前用vim创建了个daemon.json</p> <p><a href="https://blog.csdn.net/zwlww1/article/details/129624289#:~:text=提示：Job">解决docker启动报错：Job for docker.service failed because the control process exited with error code-CSDN博客</a></p> <p>解决：</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu:/etc/docker<span class="nv">$ </span><span class="nb">sudo rm </span>daemon.json 
-</code></pre></div></div> <p>启动docker</p> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> systemctl start docker
-</code></pre></div></div> <p>因为正常执行build大概率会因为网络问题翻车</p> <pre>[+] Building 0.3s (3/3) FINISHED                                                                
-<font color="#3465A4"> =&gt; [internal] load .dockerignore                                                          0.0s</font>
-<font color="#3465A4"> =&gt; =&gt; transferring context: 2B                                                            0.0s</font>
-<font color="#3465A4"> =&gt; [internal] load build definition from Dockerfile                                       0.0s</font>
-<font color="#3465A4"> =&gt; =&gt; transferring dockerfile: 2.33kB                                                     0.0s</font>
-<font color="#CC0000"> =&gt; ERROR [internal] load metadata for nvcr.io/nvidia/pytorch:21.09-py3                    0.3s</font>
-------
- &gt; [internal] load metadata for nvcr.io/nvidia/pytorch:21.09-py3:
-------
-Dockerfile:1
---------------------
-   1 | &gt;&gt;&gt; FROM nvcr.io/nvidia/pytorch:21.09-py3
-   2 |     
-   3 |     # set WORKDIR
---------------------
-ERROR: failed to solve: nvcr.io/nvidia/pytorch:21.09-py3: failed to do request: Head &quot;https://nvcr.io/v2/nvidia/pytorch/manifests/21.09-py3&quot;: read tcp 192.168.0.103:44150-&gt;54.148.129.60:443: read: connection reset by peer</pre> <p>所以先安装</p> <p>[ERROR <a href="https://github.com/ifzhang/ByteTrack/issues/189">internal] load metadata for nvcr.io/nvidia/tensorrt:21.09-py3 · Issue #189 · ifzhang/ByteTrack (github.com)</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull nvcr.io/nvidia/pytorch:21.09-py3 -–registry-mirror<span class="o">=</span>https://mirror.iscas.ac.cn<span class="o">(</span>国内镜像源地址<span class="o">)</span>
-</code></pre></div></div> <p>启动docker</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> vi  /etc/docker/daemon.json
-</code></pre></div></div> <p>重启docker</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service docker restart
-</code></pre></div></div> <p>查看docker信息</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker info
-</code></pre></div></div> <p>清理docker builder</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker builder prune
-</code></pre></div></div> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p><img src="image-20241004013549568.png" alt="image-20241004013549568"/></p> <p>出现这个错误是因为在构建 Docker 镜像时，网络连接到 <code class="language-plaintext highlighter-rouge">http://archive.ubuntu.com/ubuntu</code> 失败，但是不应该啊？</p> <p>记事本打开 <code class="language-plaintext highlighter-rouge">Dockerfile</code> ，发现命令：</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># replace mirror</span>
-RUN apt-get <span class="nb">install</span> <span class="nt">-q</span> <span class="nt">-y</span> <span class="nt">--no-install-recommends</span> wget <span class="se">\</span>
-<span class="o">&amp;&amp;</span> wget http://archive.ubuntu.com/ubuntu/pool/main/c/ca-certificates/ca-certificates_20230311ubuntu0.20.04.1_all.deb <span class="se">\</span>
-...
-</code></pre></div></div> <p>于是我直接去网站上查，压根没看到<code class="language-plaintext highlighter-rouge">ca-certificates_20230311ubuntu0.20.04.1_all.deb</code>这个文件，已经过时被删除了</p> <p>官网：<a href="http://archive.ubuntu.com/ubuntu/pool/main/c/ca-certificates/">Index of /ubuntu/pool/main/c/ca-certificates</a></p> <p>阿里云：<a href="http://mirrors.aliyun.com/ubuntu/pool/main/c/ca-certificates/?spm=a2c6h.25603864.0.0.644e1431A2R1g6">ubuntu-pool-main-c-ca-certificates安装包下载_开源镜像站-阿里云 (aliyun.com)</a></p> <p>替换为<code class="language-plaintext highlighter-rouge">ca-certificates_20240203~20.04.1_all.deb</code>版本后解决：</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-<span class="o">&amp;&amp;</span> wget http://mirrors.aliyun.com/ubuntu/pool/main/c/ca-certificates/ca-certificates_20240203~20.04.1_all.deb <span class="se">\</span>
-<span class="o">&amp;&amp;</span> dpkg <span class="nt">-i</span> ./ca-certificates_20240203~20.04.1_all.deb
-...
-</code></pre></div></div> <p>完美解决</p> <p><img src="image-20241004184052786.png" alt="image-20241004184052786"/></p> <p>GPU不可用？</p> <pre><code class="language-apl">WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
-</code></pre> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p>运行DreamWaQ</p> <p><a href="https://blog.csdn.net/eye123456789/article/details/120879982#:~:text=为了在Win">docker的安装以及跑本地项目代码步骤说明_docker怎么运行本地代码-CSDN博客</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-itd</span>
-</code></pre></div></div> <p>WSL安装</p> <p><a href="https://blog.csdn.net/weixin_45840825/article/details/127138564">win11 安装 WSL2 在非 C 盘及配置（图形界面+代理）_wsl不安装在c盘 csdn-CSDN博客</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div> <p>docker run ，用docker命令运行run.sh（bash好难搞，曲线救国）</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> S:<span class="se">\P</span>rogramming<span class="se">\r</span>l_docker-main:/home/root/rl_ws <span class="nt">--gpus</span><span class="o">=</span>all <span class="nt">--name</span><span class="o">=</span>rl rl_docker-main bash /home/root/rl_ws/setup.sh
-</code></pre></div></div> <p>setup.sh里的pip失败</p> <p><img src="image-20241005012110467.png" alt="image-20241005012110467"/></p> <p>注释掉setup.sh里面不存在的文件就行，其实不是不存在，是要下载</p> <p><a href="https://blog.csdn.net/m0_37802038/article/details/134629194">20231126-超详细Isaac Gym安装教程（基于双系统版本）-CSDN博客</a></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-pip <span class="nb">install</span> <span class="nt">-e</span> ./isaacgym/python
-pip <span class="nb">install</span> <span class="nt">-e</span> ./rsl_rl
-pip <span class="nb">install</span> <span class="nt">-e</span> ./legged_gym
-
-<span class="c"># 安装gym</span>
-pip <span class="nb">install</span> <span class="nt">-i</span> https://pypi.tuna.tsinghua.edu.cn/simple gym
-
-<span class="c"># 执行 Python 脚本</span>
-python /home/root/rl_ws/run_dreamwaq.py <span class="nt">--headless</span>
-...
-</code></pre></div></div> <p>最终结果</p> <p><img src="image-20241005021400892.png" alt="image-20241005021400892"/></p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div> <p>build</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">--network</span> host <span class="nt">-t</span> rl_docker-main <span class="nt">-f</span> S:/Programming/rl_docker-main/Dockerfile S:/Programming/rl_docker-main
-</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="Debug"/><category term="Deploy"/><summary type="html"><![CDATA[WSL下配置DreamWqa环境]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Experience"/><category term="GPT"/><category term="Prompt"/><category term="LLM"/><summary type="html"><![CDATA[使用ChatGPT-4o，这是一个实验性的文档，因为之前我其实一直不喜欢这种“提示词工程”，可能真香了hh]]></summary></entry></feed>
