@@ -1,7 +1,9 @@
 ---
-layout: post
+layout: portfolio_post
+title: An update from VS Code
 date: 2024-09-19 11:18:00
 inline: true
 related_posts: false
 ---
-这条消息更新自VScode🎈
+
+This update was published from VS Code.

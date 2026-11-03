@@ -1,0 +1,141 @@
+{
+  "name": "Chengjie Fang",
+  "email": "fangchengjie24@mails.ucas.ac.cn",
+  "github": "https://github.com/Son4ta",
+  "updated": "November 4, 2026",
+  "interests": [
+    "Scientific AI",
+    "Embodied intelligence",
+    "Research agents"
+  ],
+  "education": [
+    {
+      "school": "University of Chinese Academy of Sciences",
+      "degree": "Master's student in Artificial Intelligence",
+      "unit": "Hangzhou Institute for Advanced Study",
+      "period": "Sep 2024 — Jun 2027 (expected)",
+      "detail": "Advised by Prof. Jungang Xu. National Scholarship recipient.",
+      "url": "https://www.ucas.ac.cn/"
+    },
+    {
+      "school": "Wuhan Institute of Technology",
+      "degree": "Undergraduate study in Intelligent Science and Technology",
+      "unit": "School of Computer Science and Engineering",
+      "period": "Sep 2020 — Jun 2024",
+      "detail": "Outstanding Graduate. Admitted to UCAS through the graduate recommendation pathway.",
+      "url": "https://www.wit.edu.cn/"
+    }
+  ],
+  "experience": [
+    {
+      "id": "bytedance",
+      "company": "ByteDance",
+      "role": "LLM Algorithm Intern",
+      "team": "TikTok Global E-commerce · Data",
+      "period": "Jul 2026 — Present",
+      "location": "Beijing, China",
+      "focus": "Autonomous research for real-world forecasting",
+      "bullets": [
+        "Build agents for cross-border e-commerce logistics and supply-chain forecasting, connecting data, experimentation, and modeling platforms to automate information retrieval, task orchestration, and analysis.",
+        "Apply autonomous research workflows to delivery-time prediction through feature exploration, experiment design, result analysis, and iterative model evaluation."
+      ],
+      "tags": [
+        "Research agents",
+        "Experiment orchestration",
+        "Supply-chain forecasting"
+      ],
+      "diagram": [
+        "Explore features",
+        "Design experiments",
+        "Evaluate models"
+      ]
+    },
+    {
+      "id": "baidu",
+      "company": "Baidu",
+      "role": "Agent Algorithm Intern",
+      "team": "BMU Foundation Model Department · Frontier Research",
+      "period": "Mar — Jul 2026",
+      "location": "Beijing, China",
+      "focus": "Agents that plan, explore, and improve",
+      "bullets": [
+        "Developed an Auto Research framework for autonomous planning and iterative improvement in complex scientific workflows, with a focus on exploration strategies, context-state management, and sustained reasoning.",
+        "Designed and implemented the agent framework and experiment harness; contributed to algorithm development, experiments, and system validation."
+      ],
+      "tags": [
+        "Autonomous planning",
+        "Scientific reasoning",
+        "Context-state management"
+      ],
+      "diagram": [
+        "Represent state",
+        "Plan exploration",
+        "Learn from feedback"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "year": "Graduate study",
+      "title": "National Scholarship",
+      "detail": "University of Chinese Academy of Sciences"
+    },
+    {
+      "year": "2026",
+      "title": "Third Prize · Beijing Challenge Cup",
+      "detail": "BioClaw: scientific literature mining for life-science research resource matching"
+    },
+    {
+      "year": "Nov 2025",
+      "title": "National First Prize · China Robot Competition & RoboCup China Open",
+      "detail": "Team Captain"
+    },
+    {
+      "year": "Jun 2025",
+      "title": "National Second Prize · China Robot and Artificial Intelligence Competition",
+      "detail": "Innovation Track · Team Captain"
+    },
+    {
+      "year": "Jun 2025",
+      "title": "National Second Prize · 16th Lanqiao Cup",
+      "detail": "Python Programming · National Finals"
+    },
+    {
+      "year": "Undergraduate study",
+      "title": "Outstanding Graduate",
+      "detail": "Wuhan Institute of Technology"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Robotics & embodied AI",
+      "items": "ROS on Linux, Gazebo, Isaac Gym, SLAM, robot navigation, and physical-system debugging."
+    },
+    {
+      "name": "Learning & agents",
+      "items": "Reinforcement learning, computer vision, natural language processing, scientific machine learning, agent development, and LLM fine-tuning."
+    },
+    {
+      "name": "Research practice",
+      "items": "Problem formulation, experimental design, paper reproduction, literature review, and scientific writing."
+    }
+  ],
+  "manuscripts": [
+    {
+      "id": "scientific-state",
+      "title": "What Models Miss: Scientific State Representations for Autonomous PDE Modeling",
+      "summary": "Scientific state representations and residual-driven exploration for autonomous PDE model search and refinement.",
+      "role": "First author",
+      "status": "Under review",
+      "topic": "Research agents"
+    },
+    {
+      "id": "ocean-star",
+      "title": "Decoupling Temporal Reaction Search from Potential-Wave Spatial Response",
+      "summary": "Separating temporal reaction search from differentiable spatial physics for ocean carbon-flux forecasting.",
+      "role": "First author",
+      "status": "Under review",
+      "topic": "Scientific AI"
+    }
+  ]
+}

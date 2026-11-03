@@ -1,47 +1,34 @@
 ---
-layout: page
+layout: portfolio
 permalink: /repositories/
-title: repositories
-description: Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.
-nav: true
-nav_order: 5
+title: Code
+description: Research code, experiments, and projects from my academic work.
+nav: false
 ---
 
-{% if site.data.repositories.github_users %}
-
-## GitHub users
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for user in site.data.repositories.github_users %}
-    {% include repository/repo_user.liquid username=user %}
-  {% endfor %}
-</div>
-
----
-
-{% if site.repo_trophies.enabled %}
-{% for user in site.data.repositories.github_users %}
-{% if site.data.repositories.github_users.size > 1 %}
-
-  <h4>{{ user }}</h4>
-  {% endif %}
-  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% include repository/repo_trophies.liquid username=user %}
+<div class="container">
+  <section class="page-intro">
+    <p class="eyebrow">06 / Code archive</p>
+    <h1>Code &amp; repositories</h1>
+    <p class="lede">Research implementations, coursework, and software projects. My public repositories are available on <a href="{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>.</p>
+  </section>
+  <div class="repository-grid">
+    {% for repository in site.data.repositories.github_repos %}
+    <article class="repository-card">
+      <p class="eyebrow">Repository / {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</p>
+      <h2><a href="https://github.com/{{ repository }}" target="_blank" rel="noopener noreferrer">{{ repository | split: '/' | last }}</a></h2>
+      {% case repository %}
+      {% when 'Son4ta/TIDE-Net' %}<p>Research code for Carbon-ECS and physics-aware East China Sea carbon-flux prediction.</p>
+      {% when 'Son4ta/ForesightNav' %}<p>Semantic-geometric planning for zero-shot goal-oriented navigation.</p>
+      {% when 'Frieda73/SHNet' %}<p>A lightweight network for printed circuit board defect detection.</p>
+      {% when 'Son4ta/Intelligent-Computing-Exercise' %}<p>Exercises and project files from my earlier intelligent-computing coursework.</p>
+      {% when 'Son4ta/Picture-Processing-with-GUI' %}<p>An earlier image-processing project with a graphical user interface.</p>
+      {% when 'Son4ta/Vue-Learning-Project' %}<p>A project from my earlier work learning Vue and web development.</p>
+      {% when 'Son4ta/Son4ta.github.io' %}<p>Source for this academic homepage, built with Jekyll.</p>
+      {% else %}<p>Project files from my earlier coursework and software development.</p>
+      {% endcase %}
+      <a class="text-link" href="https://github.com/{{ repository }}" target="_blank" rel="noopener noreferrer">{{ repository }} <span aria-hidden="true">↗</span></a>
+    </article>
+    {% endfor %}
   </div>
-
----
-
-{% endfor %}
-{% endif %}
-{% endif %}
-
-{% if site.data.repositories.github_repos %}
-
-## GitHub Repositories
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.repositories.github_repos %}
-    {% include repository/repo.liquid repository=repo %}
-  {% endfor %}
 </div>
-{% endif %}

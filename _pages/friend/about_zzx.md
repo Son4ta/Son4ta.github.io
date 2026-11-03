@@ -1,3 +1,5 @@
-[张子雄](https://github.com/Andrea-Doria)，现为华中师范大学计算机科学与技术硕士研究生，本科毕业于武汉工程大学软件工程专业，曾担任智能产线装备湖北省工程研究中心项目负责人。业余自媒体人，在哔哩哔哩平台拥有366k视频播放量。此外，参加并获得了包括数学、算法设计、机器人及人工智能等多项赛事并获得了国家级奖项，公开专利一项。
+Zixiong Zhang studied Software Engineering at Wuhan Institute of Technology before pursuing a master's degree in Computer Science and Technology at Central China Normal University. His experience includes leading a project at the Hubei Engineering Research Center for Intelligent Production-Line Equipment.
 
-研究领域包括：`凸优化`、`强化学习`、`随机网络`
+He also creates videos in his spare time; the original introduction recorded 366,000 views on Bilibili. His achievements include national awards in mathematics, algorithm design, robotics, and artificial intelligence, as well as one published patent application.
+
+Research interests: `Convex optimization` · `Reinforcement learning` · `Random networks`

@@ -1,11 +1,8 @@
 ---
-layout: cv
+layout: portfolio_cv
 permalink: /cv/
-title: cv
+title: CV
 nav: true
-nav_order: 2
-cv_pdf: example_pdf.pdf
-description: 这是我的个人简历，感兴趣请随时联系我！
-toc:
-  sidebar: left
+nav_order: 6
+description: Education, research experience, publications, and selected honors.
 ---

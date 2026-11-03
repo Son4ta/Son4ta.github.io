@@ -1,0 +1,46 @@
+---
+layout: portfolio
+---
+{% assign is_news = false %}
+{% assign is_project = false %}
+{% if page.collection == 'projects' or page.url contains '/projects/' %}{% assign is_project = true %}{% endif %}
+{% if page.collection == 'news' or page.url contains '/news/' %}
+  {% assign is_news = true %}
+{% endif %}
+
+<article class="container narrow">
+  {% if is_project %}
+    <a class="back-link" href="{{ '/projects/' | relative_url }}">&larr; Research projects</a>
+  {% elsif is_news %}
+    <a class="back-link" href="{{ '/news/' | relative_url }}">&larr; All updates</a>
+  {% else %}
+    <a class="back-link" href="{{ '/blog/' | relative_url }}">&larr; Field notes</a>
+  {% endif %}
+
+  <header class="page-intro">
+    <p class="eyebrow">
+      {% if is_project %}Research project{% else %}{% if is_news %}Update{% else %}Field note{% endif %}
+      <span aria-hidden="true"> / </span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %B %Y' }}</time>{% endif %}
+    </p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+    {% if page.last_updated %}
+      <p class="muted">Updated <time datetime="{{ page.last_updated | date_to_xmlschema }}">{{ page.last_updated | date: '%d %B %Y' }}</time></p>
+    {% endif %}
+  </header>
+
+  <div class="prose" id="markdown-content">
+    {{ content }}
+  </div>
+
+  {% unless is_news or is_project %}
+    <nav class="post-archive-links" aria-label="Related archives">
+      {% assign year = page.date | date: '%Y' %}
+      <a href="{{ year | prepend: '/blog/' | append: '/' | relative_url }}">{{ year }} archive</a>
+      {% for tag in page.tags %}
+        <a href="{{ tag | slugify | prepend: '/blog/tag/' | append: '/' | relative_url }}">#{{ tag }}</a>
+      {% endfor %}
+    </nav>
+  {% endunless %}
+</article>

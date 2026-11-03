@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.url == '/' %}Chengjie Fang{% else %}{{ page.title | escape }} · Chengjie Fang{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description | strip_html | escape }}{% else %}Chengjie Fang is a UCAS master's student researching scientific machine learning, embodied intelligence, and autonomous research agents.{% endif %}">
+  <meta name="theme-color" content="#eff0e8">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page.title | default: 'Chengjie Fang' | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | escape }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/research/stagenav.webp' | absolute_url }}">
+  <link rel="icon" href="{{ '/assets/design/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+  <noscript><style>.header-inner{flex-wrap:wrap;padding-bottom:16px}.site-header nav{display:flex;position:static;flex-wrap:wrap;width:100%;margin:0;padding:0;border:0}.menu-toggle{display:none}</style></noscript>
+  <script src="{{ '/assets/js/portfolio.js' | relative_url }}" defer></script>
+  {% if page.redirect %}<meta http-equiv="refresh" content="0;url={{ page.redirect | relative_url }}">{% endif %}
+</head>
+<body id="top" class="{% if page.url == '/' %}home-page{% endif %}">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="utility-bar"><div class="utility-inner"><span><i aria-hidden="true"></i> CHENGJIE FANG / RESEARCH ARCHIVE</span><span>UCAS <b aria-hidden="true">/</b> 2026.11 <b aria-hidden="true">+</b></span></div></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Chengjie Fang home"><img class="brand-symbol" src="{{ '/assets/design/brand-mark.svg' | relative_url }}" width="58" height="58" alt="" aria-hidden="true"><span>CHENGJIE<br><strong>FANG<span class="brand-dot">.</span></strong></span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="navigation" aria-expanded="false">MENU <span aria-hidden="true">☰</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}><span>01</span> About</a>
+      <a href="{{ '/publications/' | relative_url }}"{% if page.url contains '/publications/' %} aria-current="page"{% endif %}><span>02</span> Publications</a>
+      <a href="{{ '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}><span>03</span> Research</a>
+      <a href="{{ '/experience/' | relative_url }}"{% if page.url == '/experience/' %} aria-current="page"{% endif %}><span>04</span> Experience</a>
+      <a href="{{ '/blog/' | relative_url }}"{% if page.url contains '/blog/' %} aria-current="page"{% endif %}><span>05</span> Notes</a>
+      <a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} aria-current="page"{% endif %}><span>06</span> CV</a>
+    </nav>
+    <a class="header-contact" href="mailto:{{ site.email }}" aria-label="Email Chengjie Fang">↗</a>
+  </div>
+</header>
+<main id="main">{{ content }}</main>
+<footer class="site-footer">
+  <div class="footer-top"><div><span class="eyebrow">CONTACT / COLLABORATION</span><h2>Let's talk research.</h2><a class="footer-email" href="mailto:{{ site.email }}">{{ site.email }} <span aria-hidden="true">↗</span></a></div><div class="footer-links"><a href="https://github.com/Son4ta" target="_blank" rel="noopener">GitHub ↗</a><a href="{{ '/repositories/' | relative_url }}">Code</a><a href="{{ '/Friend/' | relative_url }}">Friends</a><a href="{{ '/news/' | relative_url }}">News</a><a href="{{ '/cv/' | relative_url }}">Curriculum vitae</a></div><div class="footer-symbol" aria-hidden="true"><img src="{{ '/assets/design/brand-mark.svg' | relative_url }}" width="100" height="100" alt=""></div></div>
+  <div class="footer-bottom"><span>© 2026 CHENGJIE FANG</span><span>PERSONAL RESEARCH ARCHIVE <i class="tricolor" aria-hidden="true"></i></span><div class="footer-controls"><a href="#top" data-back-top>BACK TO TOP ↑</a></div></div>
+</footer>
+{% include portfolio_dialog.liquid %}
+</body>
+</html>

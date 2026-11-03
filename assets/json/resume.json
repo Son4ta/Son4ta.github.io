@@ -1,78 +1,210 @@
 {
   "basics": {
-    "name": "方成杰(Fang Chengjie)",
-    "education": "硕士研究生",
-    "image": "",
+    "name": "Chengjie Fang",
+    "label": "Master's student in Artificial Intelligence",
     "email": "fangchengjie24@mails.ucas.ac.cn",
-    "phone": "",
-    "url": "https://son4ta.github.io/",
-    "college": "中国科学院大学"
+    "url": "https://son4ta.github.io",
+    "summary": "Master's student at the Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences, advised by Prof. Jungang Xu. Research interests: scientific machine learning, embodied intelligence, and autonomous research agents."
   },
+  "work": [
+    {
+      "name": "ByteDance",
+      "position": "LLM Algorithm Intern",
+      "location": "Beijing, China",
+      "startDate": "2026-07",
+      "endDate": "",
+      "summary": "TikTok Global E-commerce · Data",
+      "highlights": [
+        "Build agents for cross-border e-commerce logistics and supply-chain forecasting, connecting data, experimentation, and modeling platforms to automate information retrieval, task orchestration, and analysis.",
+        "Apply autonomous research workflows to delivery-time prediction through feature exploration, experiment design, result analysis, and iterative model evaluation."
+      ],
+      "url": "https://www.bytedance.com/"
+    },
+    {
+      "name": "Baidu",
+      "position": "Agent Algorithm Intern",
+      "location": "Beijing, China",
+      "startDate": "2026-03",
+      "endDate": "2026-07",
+      "summary": "BMU Foundation Model Department · Frontier Research",
+      "highlights": [
+        "Developed an Auto Research framework for autonomous planning and iterative improvement in complex scientific workflows, with a focus on exploration strategies, context-state management, and sustained reasoning.",
+        "Designed and implemented the agent framework and experiment harness; contributed to algorithm development, experiments, and system validation."
+      ],
+      "url": "https://www.baidu.com/"
+    }
+  ],
   "education": [
     {
       "institution": "University of Chinese Academy of Sciences",
-      "location": "北京, 中国",
       "url": "https://www.ucas.ac.cn/",
-      "area": "Artificial Intelligence",
-      "studyType": "Master Degree",
-      "startDate": "2024-09-01",
-      "endDate": "2027-06-29",
-      "score": "25",
-      "courses": ["NLP"]
+      "area": "Artificial Intelligence · Expected graduation: June 2027",
+      "studyType": "Master's student",
+      "startDate": "2024-09",
+      "endDate": "2027-06",
+      "courses": [
+        "Hangzhou Institute for Advanced Study",
+        "Advisor: Prof. Jungang Xu"
+      ]
     },
     {
       "institution": "Wuhan Institute of Technology",
-      "location": "湖北, 中国",
       "url": "https://www.wit.edu.cn/",
       "area": "Intelligent Science and Technology",
-      "studyType": "Bachelor's Degree",
-      "startDate": "2020-09-01",
-      "endDate": "2024-06-29",
-      "score": "25",
-      "courses": ["AI"]
+      "studyType": "Bachelor's degree",
+      "startDate": "2020-09",
+      "endDate": "2024-06",
+      "courses": [
+        "Outstanding Graduate",
+        "Robotics laboratory: humanoid vision/control and robotic-arm development"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "name": "Decoupling Regime and Mechanistic Heterogeneity via Hierarchical Mixture-of-Experts for Global Carbon Flux Prediction",
+      "publisher": "ACM MM 2026 · CCF A",
+      "releaseDate": "2026",
+      "url": "/publications/rem-moe/",
+      "summary": "First author (1 of 6). Accepted. A hierarchical mixture-of-experts model that separates environmental regimes from physical mechanisms for interpretable global ocean carbon-flux forecasting."
+    },
+    {
+      "name": "StageNav: A Diagnostic Benchmark and State-Aligned RL Framework for Long-Horizon Navigation",
+      "publisher": "IROS 2026 · CCF C",
+      "releaseDate": "2026",
+      "url": "/publications/stagenav/",
+      "summary": "First author (1 of 5). Accepted. Geometrically verified task graphs and state-aligned reinforcement learning help navigation agents assess progress, recognize failure, and recover over long horizons."
+    },
+    {
+      "name": "Carbon-ECS: A Benchmark and a Physics-Decoupled Model for the East China Sea Carbon Flux",
+      "publisher": "ICASSP 2026 · CCF B",
+      "releaseDate": "2026",
+      "url": "/publications/carbon-ecs/",
+      "summary": "First author (1 of 6). Published. A 17-year, approximately 1 km benchmark and a physics-inspired model that pair large-scale transport modeling with iterative refinement of local carbon-flux detail."
+    },
+    {
+      "name": "ForesightNav: Adaptive Semantic-Geometric Planning for Universal Zero-Shot Goal-Oriented Navigation",
+      "publisher": "IEEE Access 2026 · IF 4.2 · 2025",
+      "releaseDate": "2026",
+      "url": "/publications/foresightnav/",
+      "summary": "Co-first author · 2nd listed (2 of 3). Published. A training-free navigation framework that combines semantic maps, graph-based target verification, and geometric frontier exploration for object, instance, and text goals."
+    },
+    {
+      "name": "SHNet: A Lightweight Network Focusing on Shallow High-Resolution Features for PCB Defect Detection",
+      "publisher": "IEEE Access 2026 · IF 4.2 · 2025",
+      "releaseDate": "2026",
+      "url": "/publications/shnet/",
+      "summary": "Co-first author · 2nd listed (2 of 3). Published. A lightweight PCB defect detector that preserves shallow high-resolution features through multi-scale adaptation, semantic alignment, and wavelet enhancement."
+    },
+    {
+      "name": "Filter-Group Mixture-of-Experts Model for Remote Sensing Forged Target Perception",
+      "publisher": "ICASSP 2026 · CCF B",
+      "releaseDate": "2026",
+      "url": "/publications/fg-moe/",
+      "summary": "Third author (3 of 6). Published. Specialized edge, wavelet, texture, and directional filters form an expert ensemble that detects subtle forgery traces in remote-sensing imagery."
+    },
+    {
+      "name": "AnyTemplate: A Zero-shot Template Matching Approach for Arbitrary-Resolution and Scale-Agnostic Images",
+      "publisher": "IJCNN 2026 · CCF C",
+      "releaseDate": "2026",
+      "url": "/publications/anytemplate/",
+      "summary": "Fourth author (4 of 5). Published. A zero-shot template-matching framework that combines visual foundation models, aspect-ratio-preserving normalization, cross-attention, and geometric refinement across image scales."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Robotics laboratory research",
+      "highlights": [
+        "Wuhan Institute of Technology",
+        "Undergraduate research experience"
+      ],
+      "url": "/projects/undergraduate_robotics/",
+      "summary": "Humanoid robot vision and control; team lead for a robotic-arm board-game project using deep learning and reinforcement learning."
+    }
+  ],
+  "awards": [
+    {
+      "title": "National Scholarship",
+      "date": "",
+      "awarder": "University of Chinese Academy of Sciences",
+      "summary": "Graduate study"
+    },
+    {
+      "title": "Third Prize · Beijing Challenge Cup",
+      "date": "2026",
+      "awarder": "BioClaw: scientific literature mining for life-science research resource matching",
+      "summary": "2026"
+    },
+    {
+      "title": "National First Prize · China Robot Competition & RoboCup China Open",
+      "date": "2025-11",
+      "awarder": "Team Captain",
+      "summary": "Nov 2025"
+    },
+    {
+      "title": "National Second Prize · China Robot and Artificial Intelligence Competition",
+      "date": "2025-06",
+      "awarder": "Innovation Track · Team Captain",
+      "summary": "Jun 2025"
+    },
+    {
+      "title": "National Second Prize · 16th Lanqiao Cup",
+      "date": "2025-06",
+      "awarder": "Python Programming · National Finals",
+      "summary": "Jun 2025"
+    },
+    {
+      "title": "Outstanding Graduate",
+      "date": "2024",
+      "awarder": "Wuhan Institute of Technology",
+      "summary": "Undergraduate study"
     }
   ],
   "skills": [
     {
-      "name": "Machine Learning",
-      "level": "Master",
-      "icon": "fa-solid fa-hashtag",
+      "name": "Robotics & embodied AI",
       "keywords": [
-        "Embodied AI"
+        "ROS on Linux, Gazebo, Isaac Gym, SLAM, robot navigation, and physical-system debugging."
       ]
-    }
-  ],
-  "languages": [
-    {
-      "language": "Chinese",
-      "fluency": "Native speaker",
-      "icon": ""
     },
     {
-      "language": "English",
-      "fluency": "Fluent",
-      "icon": ""
+      "name": "Learning & agents",
+      "keywords": [
+        "Reinforcement learning, computer vision, natural language processing, scientific machine learning, agent development, and LLM fine-tuning."
+      ]
     },
     {
-      "language": "Japanese",
-      "fluency": "Rookie",
-      "icon": ""
+      "name": "Research practice",
+      "keywords": [
+        "Problem formulation, experimental design, paper reproduction, literature review, and scientific writing."
+      ]
     }
   ],
   "interests": [
     {
-      "name": "Electronic Engineering",
-      "icon": "fa-solid fa-tag",
-      "keywords": [
-        ""
-      ]
+      "name": "Scientific AI"
+    },
+    {
+      "name": "Embodied intelligence"
+    },
+    {
+      "name": "Research agents"
     }
   ],
-  "references": [
+  "manuscripts": [
     {
-      "name": "Professor Jungang Xu",
-      "icon": "fa-solid fa-laptop",
-      "reference": "postgraduate tutor"
+      "name": "What Models Miss: Scientific State Representations for Autonomous PDE Modeling",
+      "publisher": "Manuscript under review",
+      "releaseDate": "In review",
+      "url": "/publications/",
+      "summary": "First author. Scientific state representations and residual-driven exploration for autonomous PDE model search and refinement."
+    },
+    {
+      "name": "Decoupling Temporal Reaction Search from Potential-Wave Spatial Response",
+      "publisher": "Manuscript under review",
+      "releaseDate": "In review",
+      "url": "/publications/",
+      "summary": "First author. Separating temporal reaction search from differentiable spatial physics for ocean carbon-flux forecasting."
     }
   ]
 }

@@ -1,19 +1,16 @@
 ---
-layout: page
-title: 北斗计划
-description: 正在努力寻找我的硕士生导师！[已完成]
-img: assets/img/12.jpg
-importance: 5
-category: Done
+layout: portfolio_post
+title: Scientific machine learning
+description: Physics-aware forecasting and hierarchical experts for ocean carbon dynamics.
+img: assets/research/rem-moe.webp
+importance: 1
+category: Research
 ---
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+My master's research at the University of Chinese Academy of Sciences, advised by **Prof. Jungang Xu**, includes learning systems for complex physical processes.
 
-## 意向导师
+[Carbon-ECS](/publications/carbon-ecs/) introduces a 17-year East China Sea benchmark and combines large-scale transport modeling with local detail refinement. [REM-MoE](/publications/rem-moe/) extends this line of work through hierarchical experts that separate environmental regimes from physical mechanisms.
 
-我已进入 _徐俊刚_ 老师门下，期待接下来3年的研究生生涯。
+I am interested in representations that make long-horizon physical prediction more reliable and interpretable.
+
+![REM-MoE architecture](/assets/research/rem-moe.webp)

@@ -1,9 +1,10 @@
 github_users:
   - Son4ta
-
 repo_description_lines_max: 2
-
 github_repos:
+  - Son4ta/TIDE-Net
+  - Son4ta/ForesightNav
+  - Frieda73/SHNet
   - Son4ta/Intelligent-Computing-Exercise
   - Son4ta/Picture-Processing-with-GUI
   - Son4ta/Vue-Learning-Project

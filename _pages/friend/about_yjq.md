@@ -1,3 +1,5 @@
-[叶姜祺](https://github.com/WIT-YJQ)，现为武汉工程大学本科生，拟录取推荐免试攻读北京电子科技学院（电科院）硕士研究生，数字媒体影视特效资深爱好者。曾任中国联合网络通信集团有限公司Business Development。视频特效领域专家。
+[Jiangqi Ye](https://github.com/WIT-YJQ) was an undergraduate at Wuhan Institute of Technology with a recommendation-based offer for master's study at Beijing Electronic Science and Technology Institute when this introduction was written. He has worked in business development at China Unicom and is an enthusiastic practitioner of digital media, film effects, and video post-production.
 
-研究领域包括：`软件工程`、`数字媒体技术`、`光州RUNNING MAN`
+Research interests: `Software engineering` · `Digital media technology`
+
+Beyond the technical work: a devoted fan of Running Man.

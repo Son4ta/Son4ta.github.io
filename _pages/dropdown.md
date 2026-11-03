@@ -1,19 +1,9 @@
 ---
-layout: page
-title: submenus
+layout: portfolio
+title: Navigation
 nav: false
-nav_order: 8
-dropdown: true
-children:
-  - title: publications
-    permalink: /publications/
-  - title: divider
-  - title: projects
-    permalink: /projects/
-  - title: divider
-  - title: blog
-    permalink: /blog/
-  - title: divider
-  - title: blog
-    permalink: /blog/
+permalink: /_pages/dropdown/
+redirect: /
 ---
+
+<div class="container"><section class="page-intro"><p class="eyebrow">Navigation</p><h1>Page moved</h1><p class="lede">Continue to the <a href="/">homepage</a>.</p></section></div>

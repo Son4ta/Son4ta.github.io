@@ -1,0 +1,93 @@
+---
+layout: portfolio
+---
+<div class="container cv-page">
+  <section class="page-intro">
+    <p class="eyebrow">06 / Curriculum vitae</p>
+    <h1>{{ site.data.profile.name }}</h1>
+    <p class="lede">Scientific AI · Embodied intelligence · Autonomous research agents</p>
+    <div class="page-actions">
+      <button type="button" class="button button-primary" data-print>Print / Save as PDF ↓</button>
+      <a class="text-link" href="mailto:{{ site.data.profile.email }}">{{ site.data.profile.email }} <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">01</span><h2>Profile</h2></div>
+    <p>I am a master's student in Artificial Intelligence at the Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences, advised by Prof. Jungang Xu. My research focuses on scientific machine learning, embodied intelligence, and autonomous research agents. I study how physical structure, task representations, and feedback can inform learning systems, with applications in ocean carbon-flux forecasting, long-horizon navigation, and autonomous experimentation. I expect to graduate in June 2027.</p>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">02</span><h2>Education</h2></div>
+    {% for education in site.data.profile.education %}
+    <article class="education-row">
+      <span>{{ education.period }}</span>
+      <div>
+        <h3><a href="{{ education.url }}" target="_blank" rel="noopener noreferrer">{{ education.school }} <span aria-hidden="true">↗</span></a></h3>
+        <p><strong>{{ education.degree }}</strong></p>
+        <p>{{ education.unit }}</p>
+        <p>{{ education.detail }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">03</span><h2>Research experience</h2></div>
+    {% for experience in site.data.profile.experience %}
+    <article class="cv-experience">
+      <div><h3>{{ experience.company }} · {{ experience.role }}</h3><span>{{ experience.period }}</span></div>
+      <p>{{ experience.team }} · {{ experience.location }}</p>
+      <ul>{% for bullet in experience.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul>
+    </article>
+    {% endfor %}
+    <article class="cv-experience">
+      <div><h3>Wuhan Institute of Technology · Undergraduate robotics research</h3><span>Undergraduate study</span></div>
+      <p>Advisors: <a href="https://cs.wit.edu.cn/info/1026/5517.htm" target="_blank" rel="noopener noreferrer">Tongzhou Zhao</a> and <a href="https://cs.wit.edu.cn/info/1026/8528.htm" target="_blank" rel="noopener noreferrer">Xun Li</a></p>
+      <ul>
+        <li>Joined the university's robotics laboratory in my second year and worked on image processing and control for humanoid robots.</li>
+        <li>Led a robotic-arm board-game project in my third year, using deep learning and reinforcement learning. The project was entered in national student competitions.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">04</span><h2>Publications</h2></div>
+    <p>{{ site.data.research_papers | size }} published or accepted papers. * Equal contribution.</p>
+    <ol class="cv-papers">
+      {% for paper in site.data.research_papers %}
+      <li>
+        <h3><a href="{{ '/publications/' | append: paper.id | append: '/' | relative_url }}">{{ paper.title }}</a></h3>
+        <p>{% for author in paper.authors %}{% if author == site.data.profile.name %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% if paper.equal contains forloop.index0 %}<sup>*</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+        <div class="paper-meta">
+          <span class="venue-badge">{{ paper.venue }} <strong>{{ paper.year }}</strong></span>
+          <span class="rank-badge">{{ paper.rank }}</span>
+          <span class="author-badge">{{ paper.role }}</span>
+          <span class="status-badge">{{ paper.status }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">05</span><h2>Manuscripts under review</h2></div>
+    {% include portfolio_manuscripts.liquid %}
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">06</span><h2>Selected honors &amp; awards</h2></div>
+    {% for award in site.data.profile.awards %}
+    <article class="award-row"><span>{{ award.year }}</span><div><h3>{{ award.title }}</h3><p>{{ award.detail }}</p></div></article>
+    {% endfor %}
+  </section>
+
+  <section class="cv-section">
+    <div class="section-head"><span class="section-id">07</span><h2>Technical &amp; research skills</h2></div>
+    <div class="skill-grid">
+      {% for skill in site.data.profile.skills %}
+      <article><h3>{{ skill.name }}</h3><p>{{ skill.items }}</p></article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

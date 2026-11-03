@@ -1,0 +1,8 @@
+{% assign experience = include.experience %}
+<article class="experience-card {{ experience.id }}" id="{{ experience.id }}">
+
+  <img class="company-watermark" src="{% if experience.id == 'bytedance' %}{{ '/assets/brand/bytedance.svg' | relative_url }}{% else %}{{ '/assets/brand/baidu.png' | relative_url }}{% endif %}" alt="" aria-hidden="true">
+  <div class="experience-top"><span class="experience-code">{% if experience.id == 'bytedance' %}EXP.02{% else %}EXP.01{% endif %}</span><span class="experience-date">{{ experience.period }}</span>{% if experience.id == 'bytedance' %}<span class="current-status"><i></i> CURRENT</span>{% endif %}</div>
+  <div class="experience-content"><div class="experience-identity"><h3>{{ experience.company }}</h3><p class="experience-role">{{ experience.role }}</p><p class="experience-team">{{ experience.team }}</p><span class="experience-location">{{ experience.location }}</span></div><div class="experience-detail"><ul>{% for bullet in experience.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul><div class="topic-tags">{% for tag in experience.tags %}<span>{{ tag }}</span>{% endfor %}</div></div></div>
+  <div class="experience-baseline"><span>RESEARCH FOCUS</span><p>{{ experience.focus }}</p><span aria-hidden="true">↗</span></div>
+</article>
