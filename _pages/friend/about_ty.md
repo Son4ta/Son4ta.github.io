@@ -1,3 +1,5 @@
-[陶冶](https://github.com/Andrea-Doria)，陶冶，现为武汉工程大学本科生，拟录取攻读华中科技大学硕士研究生。洛圣都五好公民、反恐精英现役士兵，在洛圣都捣毁众多奶粉窝点、扫除黑恶势力，并在服役期间参与众多战役（炙热沙城、炼狱小镇、米垃圾等），长期去去召唤师峡谷修炼，想在读研期间学习机器人相关技术，以便来年更好扫除罪恶都市邪恶势力。
+[Ye Tao](https://github.com/Andrea-Doria) was an undergraduate at Wuhan Institute of Technology preparing to begin a master's degree at Huazhong University of Science and Technology when this introduction was written. He hopes to study robotics during graduate school, with an interest in robot security.
 
-研究领域包括：`机器人安全`
+Away from research, his introduction reads like a gaming résumé: a model citizen of Los Santos, a veteran of Counter-Strike maps including Dust II, Inferno, and Mirage, and a regular visitor to Summoner's Rift. His plan is to return to those fictional worlds with better robotics skills and the same sense of humor.
+
+Research interests: `Robot security`

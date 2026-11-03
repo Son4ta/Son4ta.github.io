@@ -1,3 +1,5 @@
-[杨开展](yangkzz803@gmail.com)，现为中国地质大学（武汉）计算机科学硕士生，本科毕业于武汉工程大学智能科学与技术专业，2024级优秀毕业生，河南商丘人。本科期间在高等数学、概率论与数理统计、线性代数方面有很扎实的基础。酒量惊人，在瓦洛兰特、魂类游戏中也展现出惊人的天赋。
+[Kaizhan Yang](mailto:yangkzz803@gmail.com) studied Intelligent Science and Technology at Wuhan Institute of Technology, graduating with distinction in 2024, before pursuing a master's degree in Computer Science at China University of Geosciences, Wuhan. Originally from Shangqiu, Henan, he developed a strong undergraduate foundation in calculus, probability, mathematical statistics, and linear algebra.
 
-研究领域包括：`并行计算`、`体系结构`、`CUDA`
+Outside research, he is known among friends for his enthusiasm for Valorant and Soulslike games—and for holding his own at a celebration.
+
+Research interests: `Parallel computing` · `Computer architecture` · `CUDA`

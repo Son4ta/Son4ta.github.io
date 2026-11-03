@@ -1,3 +1,3 @@
-[孙子禹](https://github.com)，现为中国科学院大学人工智能硕士研究生。郑州大学网络空间安全学院物联网工程专业优秀毕业生，来自河南周口。辩论赛选手，在操作系统、数据结构等核心课程中打下坚实基础。希望通过深入研究，为国家计算机科研事业的发展贡献力量。
+Ziyu Sun graduated with distinction in Internet of Things Engineering from the School of Cyber Science and Engineering at Zhengzhou University before pursuing a master's degree in Artificial Intelligence at the University of Chinese Academy of Sciences. A debater from Zhoukou, Henan, he built a strong foundation in operating systems and data structures and hopes to contribute to computer-science research through further study.
 
-研究领域包括：`IoT`、`嵌入式智能系统`、`分布式计算`
+Research interests: `Internet of Things` · `Embedded intelligent systems` · `Distributed computing`
