@@ -231,6 +231,7 @@ kramdown:
 include: ["_pages"]
 exclude:
   - bin/
+  - assets/jupyter/ # Unused notebook bundled with the original theme.
   - node_modules/
   - docs/
   - .verification/
